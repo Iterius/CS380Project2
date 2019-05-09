@@ -11,7 +11,7 @@ class Martian : public Player {
 private:
 
 public:
-    void killPlayer();
+    bool checkForObject(int nextX, int nextY);
 };
 
 

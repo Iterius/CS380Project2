@@ -12,12 +12,20 @@ private:
     int locationY;
     int nextX;
     int nextY;
+    char characterInitial;
+    Board *playerBoard;
+    pthread_mutex_t *mutex;
+    bool potentialCarrot;
+    bool hasCarrot;
     void pickDirection();
     bool checkOutOfBounds(int nextX, int nextY);
     bool checkForObject(int nextX, int nextY);
 public:
     Player();
-    Player(int locationX, int locationY);
+    Player(pthread_mutex_t *mutex, Board *board, char initial);
+    char getCharacterInitial();
+    bool getHasCarrot();
+    void setLocation(int x, int y);
     void takeTurn();
 };
 
