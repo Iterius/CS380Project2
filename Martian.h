@@ -5,6 +5,7 @@
 #ifndef CS380PROJECT2_MARTIAN_H
 #define CS380PROJECT2_MARTIAN_H
 
+#include <pthread.h>
 #include "Player.h"
 
 class Martian : public Player {
@@ -12,6 +13,7 @@ private:
 
 public:
     bool checkForObject(int nextX, int nextY);
+    bool isMartian();
 };
 
 

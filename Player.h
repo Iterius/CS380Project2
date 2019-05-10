@@ -5,9 +5,11 @@
 #ifndef CS380PROJECT2_PLAYER_H
 #define CS380PROJECT2_PLAYER_H
 
+#include <pthread.h>
 
+class Board;
 class Player {
-private:
+protected:
     int locationX;
     int locationY;
     int nextX;
@@ -25,6 +27,8 @@ public:
     Player(pthread_mutex_t *mutex, Board *board, char initial);
     char getCharacterInitial();
     bool getHasCarrot();
+    bool isMartian();
+    void setCarrot(bool victimHasCarrot);
     void setLocation(int x, int y);
     void takeTurn();
 };

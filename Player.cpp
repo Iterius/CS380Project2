@@ -56,9 +56,10 @@ void Player::pickDirection() {
 }
 
 bool Player::checkOutOfBounds(int nextX, int nextY) {
-    if(nextX > 4 || nextY > 4 || nextX < 0 || nextY < 0) {
-
+    if(nextX < 4 && nextY < 4 && nextX > 0 && nextY > 0) {
+        return true;
     }
+    return false;
 }
 
 bool Player::checkForObject(int nextX, int nextY) {
@@ -77,20 +78,31 @@ bool Player::checkForObject(int nextX, int nextY) {
                 validMove = true;
             }
             break;
-        case default
+        default:
+            break;
     }
+    return validMove;
+}
+
+void Player::setCarrot(bool victimHasCarrot) {
+    hasCarrot = victimHasCarrot;
+}
+
+bool Player::isMartian() {
+    return false;
 }
 
 void Player::takeTurn() {
-    int nextPosition;
     bool hasMoved = false;
     while(!hasMoved) {
         pickDirection();
-        checkOutOfBounds(nextX, nextY);
-        checkForObject(nextX, nextY);
-        int pthread_mutex_lock(pthread_mutex_t *mutex);
-        hasMoved = playerBoard->updatePosition(/*locationx, locationy, nextx, nexty*/);
-        int pthread_mutex_unlock(pthread_mutex_t *mutex);
+        if(checkOutOfBounds(nextX, nextY)) {
+            if (checkForObject(nextX, nextY)){
+                int pthread_mutex_lock(pthread_mutex_t *mutex);
+                hasMoved = playerBoard->updatePosition(locationX, locationY, nextX, nextY);
+                int pthread_mutex_unlock(pthread_mutex_t *mutex);
+            }
+        }
         if(potentialCarrot && hasMoved) {
             hasCarrot = true;
         } else {
