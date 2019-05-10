@@ -1,18 +1,20 @@
 #ifndef BOARD_H
 #define BOARD_H
 #include <math.h>
+#include <vector>
+#include "Player.h"
 
 class Board
 {
     public:
-
-        Board();
+        Board(pthread_mutex_t mutex);
         void printBoard();
         ~Board();
         int getObjectAtLocation(int x, int y);
-        bool updatePosition(int id, int x, int y);
+        bool updatePosition(int oldx, int oldy, int x, int y);
         int hasWon();
-        vector<Player> getPlayers();
+        std::vector<Player>* getPlayers();
+        void randomMoveMountain();
 
     protected:
 
@@ -22,7 +24,12 @@ class Board
         int mountainY;
         int carrotFlagX;
         int carrotFlagY;
-        vector<Player> players;
+        std::vector<Player> players;
+        pthread_mutex_t mutex;
+        void findValidPosition(int* x, int *y);
+        bool flagCovered;
+        int won;
+
 };
 
 #endif // BOARD_H

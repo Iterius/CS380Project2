@@ -13,9 +13,9 @@ int main()
     pthread_attr_t attr;
     pthread_attr_init(&attr);
     pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
+    std::vector<Player> *players = board.getPlayers();
     while(win == 0)
     {
-        vector<Player> players = board.getPlayers();
         for(int x = 0; x < players.size(); x++)
         {
             pthread_create(&threads[i], &attr, players.at(x).takeTurn, nullptr);
@@ -26,4 +26,5 @@ int main()
         }
         win = board.hasWon();
     }
+
 }
