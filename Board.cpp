@@ -27,7 +27,14 @@ Board::Board(pthread_mutex_t mutex)
             initial = 'T';
         else if (x == 3)
             initial = 'M';
-        players.push_back(new Player(mutex, this, initial));
+        if(x == 3)
+        {
+            players.push_back((Player)(new Martian(mutex, this, initial)));
+        }
+        else
+        {
+            players.push_back(new Player(mutex, this, initial));
+        }
 
         int playerX = 0;
         int playerY = 0;
@@ -122,7 +129,11 @@ bool Board::updatePosition(int oldx, int oldy, int x, int y)
             players.remove(positions[oldx][oldy]-2);
             int toUpdateX = 0;
             int toUpdateY = 0;
-            for(int x = 0; x <  )
+            for(int x = positions[oldx][oldy]-2; x < players.size();x++)
+            {
+                players.at(x).getLocation(*toUpdateX, *toUpdateY);
+
+            }
         }
     }
     else
