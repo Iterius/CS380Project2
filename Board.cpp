@@ -111,6 +111,15 @@ int getObjectAtLocation(int x, int y)
 {
     return positions[x][y];
 }
+void Board::moveToPosition(toMove, x, y)
+{
+    previousX = 6;
+    previousY = 6;
+    toMove->getLocation(*previousX, *previousY);
+    positions[x][y] = positions[previousX][previousY];
+    positions[previousX][previousY] = 0;
+
+}
 bool Board::updatePosition(int oldx, int oldy, int x, int y)
 {
     Player *toMove = *players.at(positions[oldx][oldy]-2);
@@ -120,20 +129,41 @@ bool Board::updatePosition(int oldx, int oldy, int x, int y)
         {
             won = positions[oldx][oldy]-1;
             moveToPosition(toMove, x, y);
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
     else if (positions[x][y] > 2)
     {
         if(toMove->isMartian())
         {
+            if(toMove->getHasCarrot() && players.at(positions[oldx][oldy]-2)->getHasCarrot())
+            {
+                carrotFlagX = x;
+                carrotFlagY = y;
+                flagCovered = true;
+            }
+            else if (players.at(positions[oldx][oldy-2)->getHasCarrot())
+            {
+                toMove.setCarrot(true);
+            }
             players.remove(positions[oldx][oldy]-2);
             int toUpdateX = 0;
             int toUpdateY = 0;
             for(int x = positions[oldx][oldy]-2; x < players.size();x++)
             {
                 players.at(x).getLocation(*toUpdateX, *toUpdateY);
-
+                positions[toUpdateX][toUpdateY]--;
             }
+            moveToPosition(toMove, x, y);
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
     else
@@ -155,6 +185,7 @@ bool Board::updatePosition(int oldx, int oldy, int x, int y)
             carrotFlagY = y;
             flagCovered = true;
         }
-        toMove->setLocation();
+        moveToPosition(toMove, x, y);
+        return true;
     }
 }

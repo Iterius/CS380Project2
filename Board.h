@@ -19,7 +19,7 @@ class Board
     protected:
 
     private:
-        int[][] positions;
+        int positions[][];
         int mountainX;
         int mountainY;
         int carrotFlagX;
