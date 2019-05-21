@@ -1,13 +1,16 @@
 #include "Board.h"
-#include <pthread.h>
+#include <thread>
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
 #include <vector>
 #include "Player.h"
+#include <mutex>
 #include "Martian.h"
-Board::Board(pthread_mutex_t mutex)
+int MAX_THREADS = 4;
+Board::Board(std::mutex mutex)
 {
+
     srand(time(0));
     this->mutex = mutex;
     positions = int[5][5];

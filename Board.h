@@ -2,12 +2,13 @@
 #define BOARD_H
 #include <math.h>
 #include <vector>
+#include <mutex>
 #include "Player.h"
 
 class Board
 {
     public:
-        Board(pthread_mutex_t mutex);
+        Board(std::mutex mutex);
         void printBoard();
         ~Board();
         int getObjectAtLocation(int x, int y);
@@ -25,7 +26,7 @@ class Board
         int carrotFlagX;
         int carrotFlagY;
         std::vector<Player> players;
-        pthread_mutex_t mutex;
+        std::mutex mutex;
         void findValidPosition(int* x, int *y);
         bool flagCovered;
         int won;
