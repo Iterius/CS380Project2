@@ -8,10 +8,11 @@
 class Board
 {
     public:
-        Board(std::mutex mutex);
+        Board(std::mutex *mutex);
         void printBoard();
         ~Board();
         int getObjectAtLocation(int x, int y);
+        void moveToPosition(Player *toMove, int x, int y);
         bool updatePosition(int oldx, int oldy, int x, int y);
         int hasWon();
         std::vector<Player>* getPlayers();
@@ -26,7 +27,7 @@ class Board
         int carrotFlagX;
         int carrotFlagY;
         std::vector<Player> players;
-        std::mutex mutex;
+        std::mutex *mutex;
         void findValidPosition(int* x, int *y);
         bool flagCovered;
         int won;

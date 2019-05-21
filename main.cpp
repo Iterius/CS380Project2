@@ -5,29 +5,30 @@
 #include "Board.h"
 using namespace std;
 #define NUM_THREADS 5
+Player *turnTaker;
 
-void* runPlayer(void* player) {
-    Player* turnTaker = (Player*) player;
+void runPlayer() {
     turnTaker->takeTurn();
 }
 
 int main()
 {
     mutex mutex;
-    thread playerThreads[NUM_THREADS];
-    Board board = new Board(mutex);
+    thread *playerThreads[NUM_THREADS];
+    Board board = *(new Board(&mutex));
     int win = 0;
-    std::vector<Player> *players = board.getPlayers();
+    vector<Player> *players = board.getPlayers();
     while(win == 0)
     {
         for(int x = 0; x < players->size(); x++)
         {
-            Player* player = &players->at(x);
-            playerThreads[x] = threadObj(player->takeTurn());
+            turnTaker = &players->at(x);
+            thread threadObj(runPlayer);
+            playerThreads[x] = &threadObj;
         }
         for(int x = 0; x < players->size(); x++)
         {
-            playerThreads[x].join();
+            playerThreads[x]->join();
         }
         win = board.hasWon();
     }

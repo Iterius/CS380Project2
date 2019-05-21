@@ -9,7 +9,7 @@
 C:/Users/picto/Documents/GitHub/CS380Project2/Board.cpp
 Board.h
 C:/Users/picto/Documents/GitHub/CS380Project2/Board.h
-pthread.h
+thread
 -
 iostream
 -
@@ -21,6 +21,10 @@ vector
 -
 Player.h
 C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
+mutex
+-
+iterator
+-
 Martian.h
 C:/Users/picto/Documents/GitHub/CS380Project2/Martian.h
 
@@ -29,48 +33,22 @@ math.h
 -
 vector
 -
-Player.h
-C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
-
-C:/Users/picto/Documents/GitHub/CS380Project2/Martian.cpp
-Player.h
-C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
-Martian.h
-C:/Users/picto/Documents/GitHub/CS380Project2/Martian.h
-Board.h
-C:/Users/picto/Documents/GitHub/CS380Project2/Board.h
-pthread.h
+mutex
 -
+Player.h
+C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
 
 C:/Users/picto/Documents/GitHub/CS380Project2/Martian.h
-pthread.h
+thread
+-
+mutex
 -
 Player.h
 C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
 
-C:/Users/picto/Documents/GitHub/CS380Project2/Player.cpp
-stdlib.h
--
-time.h
--
-pthread.h
--
-Board.h
-C:/Users/picto/Documents/GitHub/CS380Project2/Board.h
-Player.h
 C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
-
-C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
-pthread.h
+thread
 -
-
-C:/Users/picto/Documents/GitHub/CS380Project2/main.cpp
-iostream
+mutex
 -
-pthread.h
--
-vector
--
-Board.h
-C:/Users/picto/Documents/GitHub/CS380Project2/Board.h
 

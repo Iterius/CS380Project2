@@ -24,6 +24,11 @@ char Player::getCharacterInitial() {
     return characterInitial;
 }
 
+void Player::getLocation(int *x, int *y) {
+    *x = locationX;
+    *y = locationY;
+}
+
 bool Player::getHasCarrot() {
     return hasCarrot;
 }

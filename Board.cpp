@@ -6,14 +6,14 @@
 #include <vector>
 #include "Player.h"
 #include <mutex>
+#include <iterator>
 #include "Martian.h"
 int MAX_THREADS = 4;
-Board::Board(std::mutex mutex)
+Board::Board(std::mutex *mutex)
 {
 
     srand(time(0));
     this->mutex = mutex;
-    positions = int[5][5];
     for(int x = 0; x < 5; x++)
     {
         for(int y = 0; y < 5; y++)
@@ -21,7 +21,6 @@ Board::Board(std::mutex mutex)
             positions[x][y] = 0;
         }
     }
-    players = new std::vector<Player>();
     char initial;
     for(int x = 0; x < 4; x++)
     {
@@ -35,11 +34,11 @@ Board::Board(std::mutex mutex)
             initial = 'M';
         if(x == 3)
         {
-            players.push_back((Player)(new Martian(&mutex, this, initial)));
+            players.push_back((Player)*(new Martian(mutex, this, initial)));
         }
         else
         {
-            players.push_back(new Player(*mutex, *this, initial));
+            players.push_back(*(new Player(mutex, this, initial)));
         }
 
         int playerX = 0;
@@ -49,11 +48,11 @@ Board::Board(std::mutex mutex)
         positions[playerX][playerY] = x+2;
 
     }
-    findValidPosition(*mountainX, *mountainY);
+    findValidPosition(&mountainX, &mountainY);
     positions[mountainX][mountainY] = 2;
-    findValidPosition(*carrotFlagX, carrotFlagY);
+    findValidPosition(&carrotFlagX, &carrotFlagY);
     positions[carrotFlagX][carrotFlagY] = 1;
-    findValidPosition(*carrotFlagX, carrotFlagY);
+    findValidPosition(&carrotFlagX, &carrotFlagY);
     positions[carrotFlagX][carrotFlagY] = 1;
     carrotFlagX = 6;
     carrotFlagY = 6;
@@ -65,9 +64,9 @@ void Board::findValidPosition(int*x, int*y)
     srand(time(0));
     while(!found)
     {
-        &x = rand() % 5;
-        &y = rand() % 5;
-        if(positions[x][y] == 0)
+        *x = rand() % 5;
+        *y = rand() % 5;
+        if(positions[*x][*y] == 0)
         {
             found = true;
         }
@@ -93,14 +92,14 @@ void Board::printBoard()
             {
                 std::cout <<"C      ";
             }
-            else if(position[x][y] == 2)
+            else if(positions[x][y] == 2)
             {
                 std::cout <<"M      ";
             }
             else
             {
-                char toPrint = players.at(position[x][y] -3 ).getCharacterInitial();
-                if(players.at(position[x][y]-3).getHasCarrot())
+                char toPrint = players.at(positions[x][y] -3 ).getCharacterInitial();
+                if(players.at(positions[x][y]-3).getHasCarrot())
                 {
                     std::cout<< toPrint << "(C)   ";
                 }
@@ -113,22 +112,30 @@ void Board::printBoard()
         std::cout << std::endl;
     }
 }
-int getObjectAtLocation(int x, int y)
+int Board::getObjectAtLocation(int x, int y)
 {
     return positions[x][y];
 }
-void Board::moveToPosition(toMove, x, y)
+std::vector<Player>* Board::getPlayers()
 {
-    previousX = 6;
-    previousY = 6;
-    toMove->getLocation(*previousX, *previousY);
+    return &players;
+}
+int Board::hasWon()
+{
+    return won;
+}
+void Board::moveToPosition(Player *toMove, int x, int y)
+{
+    int previousX = 6;
+    int previousY = 6;
+    toMove->getLocation(&previousX, &previousY);
     positions[x][y] = positions[previousX][previousY];
     positions[previousX][previousY] = 0;
 
 }
 bool Board::updatePosition(int oldx, int oldy, int x, int y)
 {
-    Player *toMove = *players.at(positions[oldx][oldy]-2);
+    Player *toMove = &players.at(positions[oldx][oldy]-2);
     if(positions[x][y] == 2)
     {
         if(toMove->getHasCarrot())
@@ -146,22 +153,24 @@ bool Board::updatePosition(int oldx, int oldy, int x, int y)
     {
         if(toMove->isMartian())
         {
-            if(toMove->getHasCarrot() && players.at(positions[oldx][oldy]-2)->getHasCarrot())
+            if(toMove->getHasCarrot() && players.at(positions[oldx][oldy]-2).getHasCarrot())
             {
                 carrotFlagX = x;
                 carrotFlagY = y;
                 flagCovered = true;
             }
-            else if (players.at(positions[oldx][oldy-2)->getHasCarrot())
+            else if (players.at(positions[oldx][oldy-2]).getHasCarrot())
             {
-                toMove.setCarrot(true);
+                toMove->setCarrot(true);
             }
-            players.remove(positions[oldx][oldy]-2);
+            std::vector<Player>::iterator itr = players.begin();
+            itr += positions[oldx][oldy]-2;
+            players.erase(itr);
             int toUpdateX = 0;
             int toUpdateY = 0;
             for(int x = positions[oldx][oldy]-2; x < players.size();x++)
             {
-                players.at(x).getLocation(*toUpdateX, *toUpdateY);
+                players.at(x).getLocation(&toUpdateX, &toUpdateY);
                 positions[toUpdateX][toUpdateY]--;
             }
             moveToPosition(toMove, x, y);
@@ -174,7 +183,7 @@ bool Board::updatePosition(int oldx, int oldy, int x, int y)
     }
     else
     {
-        if(flagCovered && carrotFlagX == oldx && carrotFlagy == oldy)
+        if(flagCovered && carrotFlagX == oldx && carrotFlagY == oldy)
         {
             positions[oldx][oldy] = 1;
             carrotFlagX = 6;

@@ -27,6 +27,7 @@ public:
     Player();
     Player(std::mutex *mutex, Board *board, char initial);
     char getCharacterInitial();
+    void getLocation(int *x, int *y);
     bool getHasCarrot();
     bool isMartian();
     void setCarrot(bool victimHasCarrot);
