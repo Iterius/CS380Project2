@@ -9,6 +9,8 @@
 C:/Users/picto/Documents/GitHub/CS380Project2/Board.cpp
 Board.h
 C:/Users/picto/Documents/GitHub/CS380Project2/Board.h
+pthread.h
+-
 iostream
 -
 cstdlib
@@ -17,6 +19,10 @@ ctime
 -
 vector
 -
+Player.h
+C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
+Martian.h
+C:/Users/picto/Documents/GitHub/CS380Project2/Martian.h
 
 C:/Users/picto/Documents/GitHub/CS380Project2/Board.h
 math.h
@@ -33,6 +39,8 @@ Martian.h
 C:/Users/picto/Documents/GitHub/CS380Project2/Martian.h
 Board.h
 C:/Users/picto/Documents/GitHub/CS380Project2/Board.h
+pthread.h
+-
 
 C:/Users/picto/Documents/GitHub/CS380Project2/Martian.h
 pthread.h

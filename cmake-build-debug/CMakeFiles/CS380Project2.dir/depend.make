@@ -3,6 +3,7 @@
 
 CMakeFiles/CS380Project2.dir/Board.cpp.obj: ../Board.cpp
 CMakeFiles/CS380Project2.dir/Board.cpp.obj: ../Board.h
+CMakeFiles/CS380Project2.dir/Board.cpp.obj: ../Martian.h
 CMakeFiles/CS380Project2.dir/Board.cpp.obj: ../Player.h
 
 CMakeFiles/CS380Project2.dir/Martian.cpp.obj: ../Board.h

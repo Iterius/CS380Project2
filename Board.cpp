@@ -1,12 +1,15 @@
 #include "Board.h"
+#include <pthread.h>
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
 #include <vector>
+#include "Player.h"
+#include "Martian.h"
 Board::Board(pthread_mutex_t mutex)
 {
     srand(time(0));
-    this.mutex = mutex;
+    this->mutex = mutex;
     positions = int[5][5];
     for(int x = 0; x < 5; x++)
     {
@@ -29,16 +32,16 @@ Board::Board(pthread_mutex_t mutex)
             initial = 'M';
         if(x == 3)
         {
-            players.push_back((Player)(new Martian(mutex, this, initial)));
+            players.push_back((Player)(new Martian(&mutex, this, initial)));
         }
         else
         {
-            players.push_back(new Player(mutex, this, initial));
+            players.push_back(new Player(*mutex, *this, initial));
         }
 
         int playerX = 0;
         int playerY = 0;
-        findValidPosition(*playerX, *playerY);
+        findValidPosition(&playerX, &playerY);
         players.at(x).setLocation(playerX, playerY);
         positions[playerX][playerY] = x+2;
 
@@ -74,37 +77,37 @@ Board::~Board()
 
 void Board::printBoard()
 {
-    cout << endl;
+    std::cout << std::endl;
     for(int y = 0; y < 5; y++)
     {
         for(int x = 0;x < 5; x++)
         {
             if(positions[x][y] == 0)
             {
-                cout <<"-      ";
+                std::cout <<"-      ";
             }
             else if(positions[x][y] == 1)
             {
-                cout <<"C      ";
+                std::cout <<"C      ";
             }
             else if(position[x][y] == 2)
             {
-                cout <<"M      ";
+                std::cout <<"M      ";
             }
             else
             {
                 char toPrint = players.at(position[x][y] -3 ).getCharacterInitial();
                 if(players.at(position[x][y]-3).getHasCarrot())
                 {
-                    cout<< toPrint << "(C)   ";
+                    std::cout<< toPrint << "(C)   ";
                 }
                 else
                 {
-                    cout << toPrint <<"      ";
+                    std::cout << toPrint <<"      ";
                 }
             }
         }
-        cout << endl;
+        std::cout << std::endl;
     }
 }
 int getObjectAtLocation(int x, int y)

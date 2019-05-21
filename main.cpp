@@ -5,9 +5,20 @@
 using namespace std;
 #define NUM_THREADS 5
 
+void* runPlayer(void* player) {
+    Player* turnTaker = (Player*) player;
+    turnTaker->takeTurn();
+}
+
 int main()
 {
-    Board board = new Board();
+    pthread_mutex_t mutex = new pthread_mutex_t;
+    if (pthread_mutex_init(&mutex, NULL) != 0)
+    {
+        printf("\n mutex init has failed\n");
+        return 1;
+    }
+    Board board = new Board(mutex);
     int win = 0;
     pthread_t threads[NUM_THREADS];
     pthread_attr_t attr;
@@ -16,13 +27,14 @@ int main()
     std::vector<Player> *players = board.getPlayers();
     while(win == 0)
     {
-        for(int x = 0; x < players.size(); x++)
+        for(int x = 0; x < players->size(); x++)
         {
-            pthread_create(&threads[i], &attr, players.at(x).takeTurn, nullptr);
+            Player* player = &players->at(x);
+            pthread_create(&threads[x], &attr, runPlayer, (void*)player);
         }
-        for(int x = 0; x < players.size(); x++)
+        for(int x = 0; x < players->size(); x++)
         {
-            pthread_join(threads[i], &status);
+            pthread_join(threads[x], &status);
         }
         win = board.hasWon();
     }

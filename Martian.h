@@ -12,6 +12,8 @@ class Martian : public Player {
 private:
 
 public:
+    Martian();
+    Martian(pthread_mutex_t *mutex, Board *board, char initial);
     bool checkForObject(int nextX, int nextY);
     bool isMartian();
 };

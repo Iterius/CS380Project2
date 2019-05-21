@@ -5,6 +5,14 @@
 #include "Player.h"
 #include "Martian.h"
 #include "Board.h"
+#include <pthread.h>
+
+
+Martian::Martian(pthread_mutex_t *mutex, Board *board, char initial) : Player(){
+    this->mutex = mutex;
+    playerBoard = board;
+    characterInitial = initial;
+}
 
 bool Martian::checkForObject(int nextX, int nextY) {
     bool validMove = false;
