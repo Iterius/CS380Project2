@@ -5,10 +5,11 @@
 #include "Player.h"
 #include "Martian.h"
 #include "Board.h"
-#include <pthread.h>
+#include <thread>
+#include <mutex>
 
 
-Martian::Martian(pthread_mutex_t *mutex, Board *board, char initial) : Player(){
+Martian::Martian(std::mutex *mutex, Board *board, char initial) : Player(){
     this->mutex = mutex;
     playerBoard = board;
     characterInitial = initial;

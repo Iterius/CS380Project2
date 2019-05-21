@@ -4,7 +4,8 @@
 
 #include <stdlib.h>
 #include <time.h>
-#include <pthread.h>
+#include <thread>
+#include <mutex>
 #include "Board.h"
 #include "Player.h"
 
@@ -13,7 +14,7 @@ Player::Player() {
     locationY = 0;
 }
 
-Player::Player(pthread_mutex_t *mutex, Board *board, char initial) : Player() {
+Player::Player(std::mutex *mutex, Board *board, char initial) : Player() {
     this->mutex = mutex;
     playerBoard = board;
     characterInitial = initial;
@@ -98,9 +99,9 @@ void Player::takeTurn() {
         pickDirection();
         if(checkOutOfBounds(nextX, nextY)) {
             if (checkForObject(nextX, nextY)){
-                int pthread_mutex_lock(pthread_mutex_t *mutex);
+                mutex->lock();
                 hasMoved = playerBoard->updatePosition(locationX, locationY, nextX, nextY);
-                int pthread_mutex_unlock(pthread_mutex_t *mutex);
+                mutex->unlock();
             }
         }
         if(potentialCarrot && hasMoved) {

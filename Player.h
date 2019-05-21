@@ -5,7 +5,8 @@
 #ifndef CS380PROJECT2_PLAYER_H
 #define CS380PROJECT2_PLAYER_H
 
-#include <pthread.h>
+#include <thread>
+#include <mutex>
 
 class Board;
 class Player {
@@ -16,7 +17,7 @@ protected:
     int nextY;
     char characterInitial;
     Board *playerBoard;
-    pthread_mutex_t *mutex;
+    std::mutex *mutex;
     bool potentialCarrot;
     bool hasCarrot;
     void pickDirection();
@@ -24,7 +25,7 @@ protected:
     bool checkForObject(int nextX, int nextY);
 public:
     Player();
-    Player(pthread_mutex_t *mutex, Board *board, char initial);
+    Player(std::mutex *mutex, Board *board, char initial);
     char getCharacterInitial();
     bool getHasCarrot();
     bool isMartian();
