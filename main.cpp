@@ -4,16 +4,36 @@
 #include <vector>
 #include "Board.h"
 using namespace std;
-#define NUM_THREADS 4
+#define NUM_THREADS_1 4
+#define NUM_THREADS_2 3
 void phase2(vector<Player> * players)
 {
-
+    mutex mtx;
+    thread playerThreads[NUM_THREADS_2];
+    Race *race = new Race(&mtx, players);
+    int win = 0;
+    SAM *sam = new SAM(&mtx);
+    while(win == 0)
+    {
+        race->printRace();
+        for(int x = 0; x < players->size(); x++)
+        {
+            playerThreads[x] = thread(&Player::takeTurn, &players->at(x));
+        }
+        playerThreads[2] = thread(&SAM::takeShot, sam);
+        for(int x = 0; x < players->size(); x++)
+        {
+            playerThreads[x].join();
+        }
+        win = race->hasWon();
+    }
+    cout<< players->at(win-1).getCharacterInitial << " Has Won!";
 }
 vector<Player>* phase1()
 {
     mutex mtx;
     vector<Player> *winners = new vector<Player>();
-    thread playerThreads[NUM_THREADS];
+    thread playerThreads[NUM_THREADS_1];
     Board *board = (new Board(&mtx));
     int win = 0;
     vector<Player> *players = board->getPlayers();
@@ -44,7 +64,7 @@ vector<Player>* phase1()
         }
         if(win != 0)
         {
-            winners->push_back(players->at(win+1));
+            winners->push_back(players->at(win-1));
             if(players->size() > 1 && winners->size() < 2)
             {
                 win = 0;
