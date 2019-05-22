@@ -10,7 +10,7 @@
 int MAX_THREADS = 4;
 Board::Board(std::mutex *mtx)
 {
-
+    won = 0;
     srand(time(0));
     this->mtx = mtx;
     for(int x = 0; x < 5; x++)
