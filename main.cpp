@@ -29,6 +29,7 @@ void phase2(vector<Player> * players)
         {
             playerThreads[x].join();
         }
+        playerThreads[2].join();
         win = race->hasWon();
     }
     cout<< players->at(win-1).getCharacterInitial() << " Has Won!";
@@ -81,7 +82,9 @@ vector<Player>* phase1()
 
 int main()
 {
-    phase2(phase1());
+    std::vector<Player> *winners = phase1();
+    cout<<"Finished phase 1: \n";
+    phase2(winners);
 
 }
 
