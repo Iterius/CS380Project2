@@ -58,6 +58,13 @@ Board::Board(std::mutex *mtx)
     carrotFlagY = 6;
     flagCovered = false;
 }
+void Board::randomMoveMountain()
+{
+    int newX, newY;
+    findValidPosition(&newX, &newY);
+    positions[mountainX][mountainY] = 0;
+    positions[newX, newY] = 2;
+}
 void Board::findValidPosition(int*x, int*y)
 {
     bool found = false;

@@ -13,6 +13,7 @@ int main()
     Board *board = (new Board(&mtx));
     int win = 0;
     vector<Player> *players = board->getPlayers();
+    int mountainMove = 0;
     while(win == 0)
     {
         board->printBoard();
@@ -25,6 +26,12 @@ int main()
             playerThreads[x].join();
         }
         win = board->hasWon();
+        mountainMove++;
+        if(mountainMove == 3)
+        {
+            mountainMove = 0;
+            board->randomMoveMountain();
+        }
     }
     cout<<players->at(win-1).getCharacterInitial()<<" has won the game thank you jesus someone did it holy hell.";
 
