@@ -13,26 +13,27 @@ void phase2(vector<Player> * players)
 {
     cout<<"Starting Phase 2: \n";
     mutex mtx;
-    thread playerThreads[NUM_THREADS_2];
+    thread racerThreads[NUM_THREADS_2];
     Race *race = (new Race(&mtx, players));
+    std::vector<Racer> *racers = race->getRacers();
     int win = 0;
     SAM *sam = new SAM(&mtx, race);
     while(win == 0)
     {
         race->printRace();
-        for(int x = 0; x < players->size(); x++)
+        for(int x = 0; x < racers->size(); x++)
         {
-            playerThreads[x] = thread(&Player::takeTurn, &players->at(x));
+            racerThreads[x] = thread(&Racer::takeTurn, &racers->at(x));
         }
-        playerThreads[2] = thread(&SAM::takeShot, sam);
-        for(int x = 0; x < players->size(); x++)
+        racerThreads[2] = thread(&SAM::takeShot, sam);
+        for(int x = 0; x < racers->size(); x++)
         {
-            playerThreads[x].join();
+            racerThreads[x].join();
         }
-        playerThreads[2].join();
+        racerThreads[2].join();
         win = race->hasWon();
     }
-    cout<< players->at(win-1).getCharacterInitial() << " Has Won!";
+    cout<< racers->at(win-1).getCharacterInitial() << " Has Won!";
 }
 vector<Player>* phase1()
 {

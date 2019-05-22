@@ -17,15 +17,9 @@ void SAM::takeShot() {
         int target = rand() % 2;
         int hitTarget = rand() % 2;
         if(hitTarget == 1) {
-            if(target == 0) {
-                mtx->lock();
-                race->setFrozen(target, true);
-                mtx->unlock();
-            } else {
-                mtx->lock();
-                race->setFrozen(target, true);
-                mtx->unlock();
-            }
+            mtx->lock();
+            race->setFrozen(target, true);
+            mtx->unlock();
         }
         hasFired = true;
     } else {

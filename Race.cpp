@@ -13,6 +13,8 @@ using namespace std;
 Race::Race(std::mutex *mtx, std::vector<Player> *players) {
     won = 0;
     length = 10;
+    player1Frozen = false;
+    player2Frozen = false;
     this->mtx = mtx;
     if(players->size() == 1 )
     {
@@ -91,7 +93,9 @@ void Race::printRace()
                 cout<<"-     ";
             }
         }
+        cout<<"\n";
     }
+    cout<<"===================================================================== \n";
 }
 int Race::hasWon()
 {

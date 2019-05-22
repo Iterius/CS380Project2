@@ -5,11 +5,8 @@
 #include "Race.h"
 #include "Racer.h"
 
-Racer::Racer() {
-    position = 0;
-}
-
 Racer::Racer(std::mutex *mtx, Race *race, char initial) {
+    position = 0;
     this->mtx = mtx;
     this->race = race;
     characterInitial = initial;
