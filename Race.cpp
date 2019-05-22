@@ -14,6 +14,14 @@ Race::Race(std::mutex *mtx, std::vector<Player> *players) {
     won = 0;
     length = 10;
     this->mtx = mtx;
+    if(players->size() == 1 )
+    {
+        oneRacer = true;
+    }
+    else
+    {
+        oneRacer = false;
+    }
     racers = new std::vector<Racer>();
     for(int x = 0; x < players->size(); x++)
     {
@@ -60,7 +68,6 @@ void Race::setFrozen(int racer, bool frozen)
 void Race::printRace()
 {
     int position1 = racers->at(0).getPosition();
-    int position2 = racers->at(1).getPosition();
     for(int x = 0; x < length; x++)
     {
         if(position1 == x)
@@ -71,14 +78,18 @@ void Race::printRace()
         {
             cout<< "-     ";
         }
-        if(position2 == x)
+        if(!oneRacer)
         {
-            cout << racers->at(1).getCharacterInitial() << "     ";
+            int position2 = racers->at(1).getPosition();
+            if(position2 == x)
+            {
+                cout << racers->at(1).getCharacterInitial() << "     ";
 
-        }
-        else
-        {
-            cout<<"-     ";
+            }
+            else
+            {
+                cout<<"-     ";
+            }
         }
     }
 }

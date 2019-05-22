@@ -18,6 +18,7 @@ private:
     std::vector<Racer> *racers;
     int won;
     int length;
+    bool oneRacer;
 
 public:
     Race(std::mutex *mtx, std::vector<Player> *players);
