@@ -19,6 +19,8 @@ protected:
     std::mutex *mtx;
     bool potentialCarrot;
     bool hasCarrot;
+    int direction;
+    int directions[4];
     void pickDirection();
     bool checkOutOfBounds(int nextX, int nextY);
     bool checkForObject(int nextX, int nextY);

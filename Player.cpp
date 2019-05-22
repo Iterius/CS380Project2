@@ -12,6 +12,9 @@
 Player::Player() {
     locationX = 0;
     locationY = 0;
+    for(int i = 0; i < 4; i++) {
+        directions[i] = 0;
+    }
 }
 
 Player::Player(std::mutex *mtx, Board *board, char initial) : Player() {
@@ -40,8 +43,14 @@ void Player::setLocation(int x, int y) {
 }
 
 void Player::pickDirection() {
-    srand(time(NULL));
-    int direction = rand() % 4;
+    direction = rand() % 4;
+    if(directions[direction] != 0) {
+        if(direction == 3) {
+            direction = 0;
+        } else {
+            direction++;
+        }
+    }
     switch(direction) {
         case 0:
             nextX = locationX;
@@ -63,7 +72,7 @@ void Player::pickDirection() {
 }
 
 bool Player::checkOutOfBounds(int nextX, int nextY) {
-    if(nextX < 4 && nextY < 4 && nextX > 0 && nextY > 0) {
+    if(nextX < 5 && nextY < 5 && nextX > -1 && nextY > -1) {
         return true;
     }
     return false;
@@ -100,6 +109,7 @@ bool Player::isMartian() {
 }
 
 void Player::takeTurn() {
+    srand(time(NULL));
     bool hasMoved = false;
     while(!hasMoved) {
         pickDirection();
@@ -115,5 +125,9 @@ void Player::takeTurn() {
         } else {
             potentialCarrot = false;
         }
+        directions[direction] = 1;
+    }
+    for(int i = 0; i < 4; i++) {
+        directions[i] = 0;
     }
 }

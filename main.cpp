@@ -26,5 +26,6 @@ int main()
         }
         win = board->hasWon();
     }
+    cout<<players->at(win-1).getCharacterInitial()<<" has won the game thank you jesus someone did it holy hell.";
 
 }
