@@ -5,7 +5,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "C:/Users/picto/Documents/GitHub/CS380Project2/Board.cpp" "C:/Users/picto/Documents/GitHub/CS380Project2/cmake-build-debug/CMakeFiles/CS380Project2.dir/Board.cpp.obj"
-  "C:/Users/picto/Documents/GitHub/CS380Project2/Martian.cpp" "C:/Users/picto/Documents/GitHub/CS380Project2/cmake-build-debug/CMakeFiles/CS380Project2.dir/Martian.cpp.obj"
   "C:/Users/picto/Documents/GitHub/CS380Project2/Player.cpp" "C:/Users/picto/Documents/GitHub/CS380Project2/cmake-build-debug/CMakeFiles/CS380Project2.dir/Player.cpp.obj"
   "C:/Users/picto/Documents/GitHub/CS380Project2/main.cpp" "C:/Users/picto/Documents/GitHub/CS380Project2/cmake-build-debug/CMakeFiles/CS380Project2.dir/main.cpp.obj"
   )

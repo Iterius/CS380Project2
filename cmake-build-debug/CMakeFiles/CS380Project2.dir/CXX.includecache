@@ -25,8 +25,6 @@ mutex
 -
 iterator
 -
-Martian.h
-C:/Users/picto/Documents/GitHub/CS380Project2/Martian.h
 
 C:/Users/picto/Documents/GitHub/CS380Project2/Board.h
 math.h
@@ -38,11 +36,19 @@ mutex
 Player.h
 C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
 
-C:/Users/picto/Documents/GitHub/CS380Project2/Martian.h
+C:/Users/picto/Documents/GitHub/CS380Project2/Player.cpp
+iostream
+-
+stdlib.h
+-
+time.h
+-
 thread
 -
 mutex
 -
+Board.h
+C:/Users/picto/Documents/GitHub/CS380Project2/Board.h
 Player.h
 C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
 

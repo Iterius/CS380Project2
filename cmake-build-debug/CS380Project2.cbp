@@ -86,12 +86,6 @@
 		<Unit filename="C:/Users/picto/Documents/GitHub/CS380Project2/Board.h">
 			<Option target="CS380Project2"/>
 		</Unit>
-		<Unit filename="C:/Users/picto/Documents/GitHub/CS380Project2/Martian.cpp">
-			<Option target="CS380Project2"/>
-		</Unit>
-		<Unit filename="C:/Users/picto/Documents/GitHub/CS380Project2/Martian.h">
-			<Option target="CS380Project2"/>
-		</Unit>
 		<Unit filename="C:/Users/picto/Documents/GitHub/CS380Project2/Player.cpp">
 			<Option target="CS380Project2"/>
 		</Unit>

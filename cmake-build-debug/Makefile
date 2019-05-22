@@ -149,33 +149,6 @@ Board.cpp.s:
 	$(MAKE) -f CMakeFiles\CS380Project2.dir\build.make CMakeFiles/CS380Project2.dir/Board.cpp.s
 .PHONY : Board.cpp.s
 
-Martian.obj: Martian.cpp.obj
-
-.PHONY : Martian.obj
-
-# target to build an object file
-Martian.cpp.obj:
-	$(MAKE) -f CMakeFiles\CS380Project2.dir\build.make CMakeFiles/CS380Project2.dir/Martian.cpp.obj
-.PHONY : Martian.cpp.obj
-
-Martian.i: Martian.cpp.i
-
-.PHONY : Martian.i
-
-# target to preprocess a source file
-Martian.cpp.i:
-	$(MAKE) -f CMakeFiles\CS380Project2.dir\build.make CMakeFiles/CS380Project2.dir/Martian.cpp.i
-.PHONY : Martian.cpp.i
-
-Martian.s: Martian.cpp.s
-
-.PHONY : Martian.s
-
-# target to generate assembly for a file
-Martian.cpp.s:
-	$(MAKE) -f CMakeFiles\CS380Project2.dir\build.make CMakeFiles/CS380Project2.dir/Martian.cpp.s
-.PHONY : Martian.cpp.s
-
 Player.obj: Player.cpp.obj
 
 .PHONY : Player.obj
@@ -242,9 +215,6 @@ help:
 	@echo ... Board.obj
 	@echo ... Board.i
 	@echo ... Board.s
-	@echo ... Martian.obj
-	@echo ... Martian.i
-	@echo ... Martian.s
 	@echo ... Player.obj
 	@echo ... Player.i
 	@echo ... Player.s

@@ -14,6 +14,8 @@ protected:
     int locationY;
     int nextX;
     int nextY;
+    bool isMartian;
+    bool isAlive;
     char characterInitial;
     Board *playerBoard;
     std::mutex *mtx;
@@ -28,9 +30,12 @@ public:
     Player();
     Player(std::mutex *mtx, Board *board, char initial);
     char getCharacterInitial();
+    bool getAlive();
+    void setAlive(bool alive);
     void getLocation(int *x, int *y);
     bool getHasCarrot();
-    bool isMartian();
+    void setMartian();
+    bool checkMartian();
     void setCarrot(bool victimHasCarrot);
     void setLocation(int x, int y);
     void takeTurn();

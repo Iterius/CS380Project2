@@ -7,7 +7,6 @@
 #include "Player.h"
 #include <mutex>
 #include <iterator>
-#include "Martian.h"
 int MAX_THREADS = 4;
 Board::Board(std::mutex *mtx)
 {
@@ -30,17 +29,13 @@ Board::Board(std::mutex *mtx)
             initial = 'D';
         else if (x == 2)
             initial = 'T';
-        else if (x == 3)
+        else if (x == 3) {
             initial = 'M';
-        if(x == 3)
-        {
-            players.push_back((Player)*(new Martian(mtx, this, initial)));
         }
-        else
-        {
-            players.push_back(*(new Player(mtx, this, initial)));
+        players.push_back(*(new Player(mtx, this, initial)));
+        if(x == 3) {
+            players.at(3).setMartian();
         }
-
         int playerX = 0;
         int playerY = 0;
         findValidPosition(&playerX, &playerY);
@@ -161,29 +156,31 @@ bool Board::updatePosition(int oldx, int oldy, int x, int y)
     }
     else if (positions[x][y] > 2)
     {
-        if(toMove->isMartian())
+        if(toMove->checkMartian())
         {
-            if(toMove->getHasCarrot() && players.at(positions[oldx][oldy]-3).getHasCarrot())
+            if(toMove->getHasCarrot() && players.at(positions[x][y]-3).getHasCarrot())
             {
                 carrotFlagX = x;
                 carrotFlagY = y;
                 flagCovered = true;
             }
-            else if (players.at(positions[oldx][oldy-3]).getHasCarrot())
+            else if (players.at(positions[x][y]-3).getHasCarrot())
             {
                 toMove->setCarrot(true);
             }
-            std::vector<Player>::iterator itr = players.begin();
-            itr += positions[oldx][oldy]-3;
-            players.erase(itr);
-            int toUpdateX = 0;
-            int toUpdateY = 0;
-            for(int x = positions[oldx][oldy]-3; x < players.size();x++)
-            {
-                players.at(x).getLocation(&toUpdateX, &toUpdateY);
-                positions[toUpdateX][toUpdateY]--;
-            }
+            players.at(positions[x][y]-3).setAlive(false);
             moveToPosition(toMove, x, y);
+            if(flagCovered && carrotFlagX == oldx && carrotFlagY == oldy)
+            {
+                positions[oldx][oldy] = 1;
+                carrotFlagX = 6;
+                carrotFlagY = 6;
+                flagCovered = false;
+            }
+            else
+            {
+                positions[oldx][oldy] = 0;
+            }
             return true;
         }
         else
@@ -212,5 +209,17 @@ bool Board::updatePosition(int oldx, int oldy, int x, int y)
             flagCovered = true;
         }
         return true;
+    }
+}
+void Board::removePlayer(int index) {
+    std::vector<Player>::iterator itr = players.begin();
+    advance(itr, index);
+    players.erase(itr);
+    int toUpdateX = 0;
+    int toUpdateY = 0;
+    for(int i = index; i < players.size();i++)
+    {
+        players.at(i).getLocation(&toUpdateX, &toUpdateY);
+        positions[toUpdateX][toUpdateY]--;
     }
 }

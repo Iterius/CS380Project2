@@ -25,6 +25,12 @@ int main()
         {
             playerThreads[x].join();
         }
+        for(int x = 0; x < players->size(); x++)
+        {
+            if(!players->at(x).getAlive()) {
+                board->removePlayer(x);
+            }
+        }
         win = board->hasWon();
         mountainMove++;
         if(mountainMove == 3)

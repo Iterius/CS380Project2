@@ -15,6 +15,7 @@ class Board
         void moveToPosition(Player *toMove, int x, int y);
         bool updatePosition(int oldx, int oldy, int x, int y);
         int hasWon();
+        void removePlayer(int index);
         std::vector<Player>* getPlayers();
         void randomMoveMountain();
 

@@ -15,6 +15,8 @@ Player::Player() {
     for(int i = 0; i < 4; i++) {
         directions[i] = 0;
     }
+    isMartian = false;
+    isAlive = true;
 }
 
 Player::Player(std::mutex *mtx, Board *board, char initial) : Player() {
@@ -78,6 +80,10 @@ bool Player::checkOutOfBounds(int nextX, int nextY) {
     return false;
 }
 
+void Player::setMartian() {
+    isMartian = true;
+}
+
 bool Player::checkForObject(int nextX, int nextY) {
     bool validMove = false;
     int object = playerBoard->getObjectAtLocation(nextX, nextY);
@@ -95,7 +101,7 @@ bool Player::checkForObject(int nextX, int nextY) {
             }
             break;
         default:
-            break;
+            return isMartian;
     }
     return validMove;
 }
@@ -104,8 +110,16 @@ void Player::setCarrot(bool victimHasCarrot) {
     hasCarrot = victimHasCarrot;
 }
 
-bool Player::isMartian() {
-    return false;
+bool Player::checkMartian() {
+    return isMartian;
+}
+
+bool Player::getAlive() {
+    return isAlive;
+}
+
+void Player::setAlive(bool alive) {
+    isAlive = alive;
 }
 
 void Player::takeTurn() {
@@ -116,7 +130,11 @@ void Player::takeTurn() {
         if(checkOutOfBounds(nextX, nextY)) {
             if (checkForObject(nextX, nextY)){
                 mtx->lock();
-                hasMoved = playerBoard->updatePosition(locationX, locationY, nextX, nextY);
+                if(isAlive) {
+                    hasMoved = playerBoard->updatePosition(locationX, locationY, nextX, nextY);
+                } else {
+                    hasMoved = true;
+                }
                 mtx->unlock();
             }
         }
