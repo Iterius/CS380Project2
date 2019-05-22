@@ -20,6 +20,7 @@ int main()
     vector<Player> *players = board.getPlayers();
     while(win == 0)
     {
+        board.printBoard();
         for(int x = 0; x < players->size(); x++)
         {
             turnTaker = &players->at(x);

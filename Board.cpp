@@ -45,7 +45,7 @@ Board::Board(std::mutex *mutex)
         int playerY = 0;
         findValidPosition(&playerX, &playerY);
         players.at(x).setLocation(playerX, playerY);
-        positions[playerX][playerY] = x+2;
+        positions[playerX][playerY] = x+3;
 
     }
     findValidPosition(&mountainX, &mountainY);
@@ -94,7 +94,7 @@ void Board::printBoard()
             }
             else if(positions[x][y] == 2)
             {
-                std::cout <<"M      ";
+                std::cout <<"F      ";
             }
             else
             {
@@ -135,7 +135,7 @@ void Board::moveToPosition(Player *toMove, int x, int y)
 }
 bool Board::updatePosition(int oldx, int oldy, int x, int y)
 {
-    Player *toMove = &players.at(positions[oldx][oldy]-2);
+    Player *toMove = &players.at(positions[oldx][oldy]-3);
     if(positions[x][y] == 2)
     {
         if(toMove->getHasCarrot())
@@ -153,22 +153,22 @@ bool Board::updatePosition(int oldx, int oldy, int x, int y)
     {
         if(toMove->isMartian())
         {
-            if(toMove->getHasCarrot() && players.at(positions[oldx][oldy]-2).getHasCarrot())
+            if(toMove->getHasCarrot() && players.at(positions[oldx][oldy]-3).getHasCarrot())
             {
                 carrotFlagX = x;
                 carrotFlagY = y;
                 flagCovered = true;
             }
-            else if (players.at(positions[oldx][oldy-2]).getHasCarrot())
+            else if (players.at(positions[oldx][oldy-3]).getHasCarrot())
             {
                 toMove->setCarrot(true);
             }
             std::vector<Player>::iterator itr = players.begin();
-            itr += positions[oldx][oldy]-2;
+            itr += positions[oldx][oldy]-3;
             players.erase(itr);
             int toUpdateX = 0;
             int toUpdateY = 0;
-            for(int x = positions[oldx][oldy]-2; x < players.size();x++)
+            for(int x = positions[oldx][oldy]-3; x < players.size();x++)
             {
                 players.at(x).getLocation(&toUpdateX, &toUpdateY);
                 positions[toUpdateX][toUpdateY]--;

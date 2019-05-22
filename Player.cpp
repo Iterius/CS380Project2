@@ -18,6 +18,7 @@ Player::Player(std::mutex *mutex, Board *board, char initial) : Player() {
     this->mutex = mutex;
     playerBoard = board;
     characterInitial = initial;
+    hasCarrot = false;
 }
 
 char Player::getCharacterInitial() {

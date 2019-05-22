@@ -6,28 +6,6 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/picto/Documents/GitHub/CS380Project2/Board.cpp
-Board.h
-C:/Users/picto/Documents/GitHub/CS380Project2/Board.h
-thread
--
-iostream
--
-cstdlib
--
-ctime
--
-vector
--
-Player.h
-C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
-mutex
--
-iterator
--
-Martian.h
-C:/Users/picto/Documents/GitHub/CS380Project2/Martian.h
-
 C:/Users/picto/Documents/GitHub/CS380Project2/Board.h
 math.h
 -
@@ -38,17 +16,21 @@ mutex
 Player.h
 C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
 
-C:/Users/picto/Documents/GitHub/CS380Project2/Martian.h
+C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
 thread
 -
 mutex
 -
-Player.h
-C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
 
-C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
+C:/Users/picto/Documents/GitHub/CS380Project2/main.cpp
+iostream
+-
 thread
 -
 mutex
 -
+vector
+-
+Board.h
+C:/Users/picto/Documents/GitHub/CS380Project2/Board.h
 

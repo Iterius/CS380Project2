@@ -13,6 +13,7 @@ Martian::Martian(std::mutex *mutex, Board *board, char initial) : Player(){
     this->mutex = mutex;
     playerBoard = board;
     characterInitial = initial;
+    hasCarrot = false;
 }
 
 bool Martian::checkForObject(int nextX, int nextY) {
