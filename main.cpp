@@ -10,12 +10,12 @@ int main()
 {
     mutex mtx;
     thread playerThreads[NUM_THREADS];
-    Board board = *(new Board(&mtx));
+    Board *board = (new Board(&mtx));
     int win = 0;
-    vector<Player> *players = board.getPlayers();
+    vector<Player> *players = board->getPlayers();
     while(win == 0)
     {
-        board.printBoard();
+        board->printBoard();
         for(int x = 0; x < players->size(); x++)
         {
             playerThreads[x] = std::thread(&Player::takeTurn, &players->at(x));
@@ -23,9 +23,8 @@ int main()
         for(int x = 0; x < players->size(); x++)
         {
             playerThreads[x].join();
-            cout<<"Thread joined \n";
         }
-        win = board.hasWon();
+        win = board->hasWon();
     }
 
 }

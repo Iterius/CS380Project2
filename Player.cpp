@@ -116,7 +116,4 @@ void Player::takeTurn() {
             potentialCarrot = false;
         }
     }
-    mtx->lock();
-    std::cout << characterInitial << " Took their turn\n";
-    mtx->unlock();
 }

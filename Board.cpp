@@ -130,6 +130,7 @@ void Board::moveToPosition(Player *toMove, int x, int y)
     int previousY = 6;
     toMove->getLocation(&previousX, &previousY);
     positions[x][y] = positions[previousX][previousY];
+    toMove->setLocation(x,y);
     positions[previousX][previousY] = 0;
 
 }
@@ -183,6 +184,7 @@ bool Board::updatePosition(int oldx, int oldy, int x, int y)
     }
     else
     {
+        moveToPosition(toMove, x, y);
         if(flagCovered && carrotFlagX == oldx && carrotFlagY == oldy)
         {
             positions[oldx][oldy] = 1;
@@ -200,7 +202,6 @@ bool Board::updatePosition(int oldx, int oldy, int x, int y)
             carrotFlagY = y;
             flagCovered = true;
         }
-        moveToPosition(toMove, x, y);
         return true;
     }
 }
