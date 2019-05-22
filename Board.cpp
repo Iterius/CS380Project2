@@ -9,11 +9,11 @@
 #include <iterator>
 #include "Martian.h"
 int MAX_THREADS = 4;
-Board::Board(std::mutex *mutex)
+Board::Board(std::mutex *mtx)
 {
 
     srand(time(0));
-    this->mutex = mutex;
+    this->mtx = mtx;
     for(int x = 0; x < 5; x++)
     {
         for(int y = 0; y < 5; y++)
@@ -34,11 +34,11 @@ Board::Board(std::mutex *mutex)
             initial = 'M';
         if(x == 3)
         {
-            players.push_back((Player)*(new Martian(mutex, this, initial)));
+            players.push_back((Player)*(new Martian(mtx, this, initial)));
         }
         else
         {
-            players.push_back(*(new Player(mutex, this, initial)));
+            players.push_back(*(new Player(mtx, this, initial)));
         }
 
         int playerX = 0;

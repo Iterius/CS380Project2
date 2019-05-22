@@ -14,7 +14,7 @@ private:
 
 public:
     Martian();
-    Martian(std::mutex *mutex, Board *board, char initial);
+    Martian(std::mutex *mtx, Board *board, char initial);
     bool checkForObject(int nextX, int nextY);
     bool isMartian();
 };

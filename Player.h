@@ -16,7 +16,7 @@ protected:
     int nextY;
     char characterInitial;
     Board *playerBoard;
-    std::mutex *mutex;
+    std::mutex *mtx;
     bool potentialCarrot;
     bool hasCarrot;
     void pickDirection();
@@ -24,7 +24,7 @@ protected:
     bool checkForObject(int nextX, int nextY);
 public:
     Player();
-    Player(std::mutex *mutex, Board *board, char initial);
+    Player(std::mutex *mtx, Board *board, char initial);
     char getCharacterInitial();
     void getLocation(int *x, int *y);
     bool getHasCarrot();

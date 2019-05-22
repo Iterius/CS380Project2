@@ -9,8 +9,8 @@
 #include <mutex>
 
 
-Martian::Martian(std::mutex *mutex, Board *board, char initial) : Player(){
-    this->mutex = mutex;
+Martian::Martian(std::mutex *mtx, Board *board, char initial) : Player(){
+    this->mtx = mtx;
     playerBoard = board;
     characterInitial = initial;
     hasCarrot = false;

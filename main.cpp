@@ -13,9 +13,9 @@ void runPlayer() {
 
 int main()
 {
-    mutex mutex;
+    mutex mtx;
     thread playerThreads[NUM_THREADS];
-    Board board = *(new Board(&mutex));
+    Board board = *(new Board(&mtx));
     int win = 0;
     vector<Player> *players = board.getPlayers();
     while(win == 0)

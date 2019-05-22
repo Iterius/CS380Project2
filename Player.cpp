@@ -14,8 +14,8 @@ Player::Player() {
     locationY = 0;
 }
 
-Player::Player(std::mutex *mutex, Board *board, char initial) : Player() {
-    this->mutex = mutex;
+Player::Player(std::mutex *mtx, Board *board, char initial) : Player() {
+    this->mtx = mtx;
     playerBoard = board;
     characterInitial = initial;
     hasCarrot = false;
@@ -43,19 +43,19 @@ void Player::pickDirection() {
     srand(time(NULL));
     int direction = rand() % 4;
     switch(direction) {
-        case '0':
+        case 0:
             nextX = locationX;
             nextY = locationY + 1;
             break;
-        case '1':
+        case 1:
             nextX = locationX + 1;
             nextY = locationY;
             break;
-        case '2':
+        case 2:
             nextX = locationX;
             nextY = locationY - 1;
             break;
-        case '3':
+        case 3:
             nextX = locationX - 1;
             nextY = locationY;
             break;
@@ -73,14 +73,14 @@ bool Player::checkForObject(int nextX, int nextY) {
     bool validMove = false;
     int object = playerBoard->getObjectAtLocation(nextX, nextY);
     switch(object) {
-        case '0':
+        case 0:
             validMove = true;
             break;
-        case '1':
+        case 1:
             validMove = true;
             potentialCarrot = true;
             break;
-        case '2':
+        case 2:
             if(hasCarrot) {
                 validMove = true;
             }
@@ -105,9 +105,9 @@ void Player::takeTurn() {
         pickDirection();
         if(checkOutOfBounds(nextX, nextY)) {
             if (checkForObject(nextX, nextY)){
-                mutex->lock();
+                mtx->lock();
                 hasMoved = playerBoard->updatePosition(locationX, locationY, nextX, nextY);
-                mutex->unlock();
+                mtx->unlock();
             }
         }
         if(potentialCarrot && hasMoved) {
@@ -116,5 +116,7 @@ void Player::takeTurn() {
             potentialCarrot = false;
         }
     }
+    mtx->lock();
     std::cout << characterInitial << " Took their turn\n";
+    mtx->lock();
 }
