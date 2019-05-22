@@ -5,9 +5,10 @@
 #include "Race.h"
 #include "SAM.h"
 
-SAM::SAM(std::mutex *mtx) {
+SAM::SAM(std::mutex *mtx, Race *race) {
     hasFired = false;
     this->mtx = mtx;
+    this->race = race;
 }
 
 void SAM::takeShot() {
@@ -18,11 +19,11 @@ void SAM::takeShot() {
         if(hitTarget == 1) {
             if(target == 0) {
                 mtx->lock();
-                Race::setFrozen(target);
+                race->setFrozen(target, true);
                 mtx->unlock();
             } else {
                 mtx->lock();
-                Race::setFrozen(target);
+                race->setFrozen(target, true);
                 mtx->unlock();
             }
         }

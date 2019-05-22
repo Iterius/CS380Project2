@@ -20,6 +20,7 @@ private:
 public:
     Racer();
     Racer(std::mutex *mtx, Race *race, char initial);
+    char getCharacterInitial();
     int getPosition();
     void takeTurn();
 };

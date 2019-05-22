@@ -10,9 +10,10 @@
 class SAM {
 private:
     bool hasFired;
+    Race *race;
     std::mutex *mtx;
 public:
-    SAM(std::mutex *mtx);
+    SAM(std::mutex *mtx, Race *race);
     void takeShot();
 };
 

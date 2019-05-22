@@ -11,11 +11,12 @@ using namespace std;
 #define NUM_THREADS_2 3
 void phase2(vector<Player> * players)
 {
+    cout<<"Starting Phase 2: \n";
     mutex mtx;
     thread playerThreads[NUM_THREADS_2];
     Race *race = (new Race(&mtx, players));
     int win = 0;
-    SAM *sam = new SAM(&mtx);
+    SAM *sam = new SAM(&mtx, race);
     while(win == 0)
     {
         race->printRace();

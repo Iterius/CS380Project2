@@ -22,18 +22,6 @@ thread
 mutex
 -
 
-C:/Users/picto/Documents/GitHub/CS380Project2/Race.cpp
-mutex
--
-vector
--
-Race.h
-C:/Users/picto/Documents/GitHub/CS380Project2/Race.h
-Player.h
-C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
-Racer.h
-C:/Users/picto/Documents/GitHub/CS380Project2/Racer.h
-
 C:/Users/picto/Documents/GitHub/CS380Project2/Race.h
 mutex
 -
@@ -41,10 +29,6 @@ vector
 -
 Player.h
 C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
-Racer.h
-C:/Users/picto/Documents/GitHub/CS380Project2/Racer.h
-
-C:/Users/picto/Documents/GitHub/CS380Project2/Racer.cpp
 Racer.h
 C:/Users/picto/Documents/GitHub/CS380Project2/Racer.h
 

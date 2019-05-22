@@ -4,21 +4,22 @@
 
 #include <mutex>
 #include <vector>
+#include <iostream>
 #include "Race.h"
 #include "Player.h"
 #include "Racer.h"
+using namespace std;
 
 Race::Race(std::mutex *mtx, std::vector<Player> *players) {
     won = 0;
     length = 10;
-    this.mtx = mtx;
-    std::vector<Racer> * temp();
+    this->mtx = mtx;
+    racers = new std::vector<Racer>();
     for(int x = 0; x < players->size(); x++)
     {
-        temp.pushback(Racer(mtx, this, players->at(x).getCharacterInitial()));
+        racers->push_back(*(new Racer(mtx, this, players->at(x).getCharacterInitial())));
     }
-    racers = temp;
-};
+}
 
 bool Race::isFrozen(int racer)
 {
@@ -42,6 +43,9 @@ void Race::toggleFrozen(int racer)
         player2Frozen = !player2Frozen;
     }
 }
+std::vector<Racer> *Race::getRacers() {
+    return racers;
+}
 void Race::setFrozen(int racer, bool frozen)
 {
     if(racer == 0)
@@ -55,8 +59,8 @@ void Race::setFrozen(int racer, bool frozen)
 }
 void Race::printRace()
 {
-    position1 = racers->at(1).getPosition;
-    position2 = racers->at(2).getPosition;
+    int position1 = racers->at(1).getPosition();
+    int position2 = racers->at(2).getPosition();
     for(int x = 0; x < length; x++)
     {
         if(position1 == x)
@@ -82,7 +86,7 @@ int Race::hasWon()
 {
     for(int x = 0; x < racers->size(); x++)
     {
-        if(racers->at(x).getPosition >= length)
+        if(racers->at(x).getPosition() >= length)
         {
             won = x+1;
         }

@@ -19,12 +19,16 @@ int Racer::getPosition() {
     return position;
 }
 
+char Racer::getCharacterInitial() {
+    return characterInitial;
+}
+
 void Racer::takeTurn() {
     mtx->lock();
-    if (!race.isFrozen(racerNumber)) {
+    if (!race->isFrozen(racerNumber)) {
         position = position + 1;
     } else {
-        race.toggleFrozen(racerNumber);
+        race->toggleFrozen(racerNumber);
     }
     mtx->unlock();
 }

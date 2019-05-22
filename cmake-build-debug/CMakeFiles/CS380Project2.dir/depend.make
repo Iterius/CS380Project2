@@ -15,9 +15,13 @@ CMakeFiles/CS380Project2.dir/Race.cpp.obj: ../Race.h
 CMakeFiles/CS380Project2.dir/Race.cpp.obj: ../Racer.h
 
 CMakeFiles/CS380Project2.dir/Racer.cpp.obj: ../Player.h
+CMakeFiles/CS380Project2.dir/Racer.cpp.obj: ../Race.h
 CMakeFiles/CS380Project2.dir/Racer.cpp.obj: ../Racer.cpp
 CMakeFiles/CS380Project2.dir/Racer.cpp.obj: ../Racer.h
 
+CMakeFiles/CS380Project2.dir/SAM.cpp.obj: ../Player.h
+CMakeFiles/CS380Project2.dir/SAM.cpp.obj: ../Race.h
+CMakeFiles/CS380Project2.dir/SAM.cpp.obj: ../Racer.h
 CMakeFiles/CS380Project2.dir/SAM.cpp.obj: ../SAM.cpp
 CMakeFiles/CS380Project2.dir/SAM.cpp.obj: ../SAM.h
 
