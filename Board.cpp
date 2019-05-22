@@ -63,7 +63,7 @@ void Board::randomMoveMountain()
     int newX, newY;
     findValidPosition(&newX, &newY);
     positions[mountainX][mountainY] = 0;
-    positions[newX, newY] = 2;
+    positions[newX][newY] = 2;
 }
 void Board::findValidPosition(int*x, int*y)
 {
