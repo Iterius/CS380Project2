@@ -5,11 +5,6 @@
 #include "Board.h"
 using namespace std;
 #define NUM_THREADS 5
-Player *turnTaker;
-
-void runPlayer() {
-    turnTaker->takeTurn();
-}
 
 int main()
 {
@@ -23,8 +18,7 @@ int main()
         board.printBoard();
         for(int x = 0; x < players->size(); x++)
         {
-            turnTaker = &players->at(x);
-            playerThreads[x] = std::thread(runPlayer);
+            playerThreads[x] = std::thread(&Player::takeTurn, &players->at(x));
         }
         for(int x = 0; x < players->size(); x++)
         {
