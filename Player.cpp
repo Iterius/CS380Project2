@@ -118,5 +118,5 @@ void Player::takeTurn() {
     }
     mtx->lock();
     std::cout << characterInitial << " Took their turn\n";
-    mtx->lock();
+    mtx->unlock();
 }

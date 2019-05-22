@@ -140,7 +140,7 @@ bool Board::updatePosition(int oldx, int oldy, int x, int y)
     {
         if(toMove->getHasCarrot())
         {
-            won = positions[oldx][oldy]-1;
+            won = positions[oldx][oldy]-2;
             moveToPosition(toMove, x, y);
             return true;
         }

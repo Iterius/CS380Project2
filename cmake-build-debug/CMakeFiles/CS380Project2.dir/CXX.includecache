@@ -38,18 +38,6 @@ mutex
 Player.h
 C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
 
-C:/Users/picto/Documents/GitHub/CS380Project2/Martian.cpp
-Player.h
-C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
-Martian.h
-C:/Users/picto/Documents/GitHub/CS380Project2/Martian.h
-Board.h
-C:/Users/picto/Documents/GitHub/CS380Project2/Board.h
-thread
--
-mutex
--
-
 C:/Users/picto/Documents/GitHub/CS380Project2/Martian.h
 thread
 -
@@ -58,37 +46,9 @@ mutex
 Player.h
 C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
 
-C:/Users/picto/Documents/GitHub/CS380Project2/Player.cpp
-iostream
--
-stdlib.h
--
-time.h
--
-thread
--
-mutex
--
-Board.h
-C:/Users/picto/Documents/GitHub/CS380Project2/Board.h
-Player.h
-C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
-
 C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
 thread
 -
 mutex
 -
-
-C:/Users/picto/Documents/GitHub/CS380Project2/main.cpp
-iostream
--
-thread
--
-mutex
--
-vector
--
-Board.h
-C:/Users/picto/Documents/GitHub/CS380Project2/Board.h
 

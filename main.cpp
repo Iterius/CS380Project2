@@ -4,7 +4,7 @@
 #include <vector>
 #include "Board.h"
 using namespace std;
-#define NUM_THREADS 5
+#define NUM_THREADS 4
 
 int main()
 {
@@ -23,6 +23,7 @@ int main()
         for(int x = 0; x < players->size(); x++)
         {
             playerThreads[x].join();
+            cout<<"Thread joined \n";
         }
         win = board.hasWon();
     }
