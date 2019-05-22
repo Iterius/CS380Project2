@@ -7,7 +7,6 @@
 
 #include <thread>
 #include <mutex>
-
 class Board;
 class Player {
 protected:

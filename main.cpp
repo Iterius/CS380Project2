@@ -14,7 +14,7 @@ void runPlayer() {
 int main()
 {
     mutex mutex;
-    thread *playerThreads[NUM_THREADS];
+    thread playerThreads[NUM_THREADS];
     Board board = *(new Board(&mutex));
     int win = 0;
     vector<Player> *players = board.getPlayers();
@@ -24,12 +24,11 @@ int main()
         for(int x = 0; x < players->size(); x++)
         {
             turnTaker = &players->at(x);
-            thread threadObj(runPlayer);
-            playerThreads[x] = &threadObj;
+            playerThreads[x] = std::thread(runPlayer);
         }
         for(int x = 0; x < players->size(); x++)
         {
-            playerThreads[x]->join();
+            playerThreads[x].join();
         }
         win = board.hasWon();
     }

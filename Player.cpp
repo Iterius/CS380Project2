@@ -1,7 +1,7 @@
 //
 // Created by picto on 5/8/2019.
 //
-
+#include <iostream>
 #include <stdlib.h>
 #include <time.h>
 #include <thread>
@@ -116,4 +116,5 @@ void Player::takeTurn() {
             potentialCarrot = false;
         }
     }
+    std::cout << characterInitial << " Took their turn\n";
 }
