@@ -69,7 +69,8 @@ vector<Player>* phase1()
         if(win != 0)
         {
             winners->push_back(players->at(win-1));
-            if(players->size() > 1 && winners->size() < 2)
+            board->removePlayer(win-1);
+            if(players->size() > 0 && winners->size() < 2)
             {
                 win = 0;
             }
