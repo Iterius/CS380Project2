@@ -13,9 +13,14 @@ class Race;
 class Racer {
 private:
     int position;
+    int racerNumber;
+    char characterInitial;
     std::mutex *mtx;
     Race *race;
 public:
+    Racer();
+    Racer(std::mutex *mtx, Race *race, char initial);
+    int getPosition();
     void takeTurn();
 };
 

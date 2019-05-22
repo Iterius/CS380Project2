@@ -9,9 +9,9 @@
 
 class SAM {
 private:
+    bool hasFired;
     std::mutex *mtx;
 public:
-    SAM();
     SAM(std::mutex *mtx);
     void takeShot();
 };
