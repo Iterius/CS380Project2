@@ -95,11 +95,53 @@ CMakeFiles/CS380Project2.dir/Board.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CS380Project2.dir/Board.cpp.s"
 	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\picto\Documents\GitHub\CS380Project2\Board.cpp -o CMakeFiles\CS380Project2.dir\Board.cpp.s
 
+CMakeFiles/CS380Project2.dir/SAM.cpp.obj: CMakeFiles/CS380Project2.dir/flags.make
+CMakeFiles/CS380Project2.dir/SAM.cpp.obj: ../SAM.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\picto\Documents\GitHub\CS380Project2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/CS380Project2.dir/SAM.cpp.obj"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\CS380Project2.dir\SAM.cpp.obj -c C:\Users\picto\Documents\GitHub\CS380Project2\SAM.cpp
+
+CMakeFiles/CS380Project2.dir/SAM.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CS380Project2.dir/SAM.cpp.i"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\picto\Documents\GitHub\CS380Project2\SAM.cpp > CMakeFiles\CS380Project2.dir\SAM.cpp.i
+
+CMakeFiles/CS380Project2.dir/SAM.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CS380Project2.dir/SAM.cpp.s"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\picto\Documents\GitHub\CS380Project2\SAM.cpp -o CMakeFiles\CS380Project2.dir\SAM.cpp.s
+
+CMakeFiles/CS380Project2.dir/Race.cpp.obj: CMakeFiles/CS380Project2.dir/flags.make
+CMakeFiles/CS380Project2.dir/Race.cpp.obj: ../Race.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\picto\Documents\GitHub\CS380Project2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/CS380Project2.dir/Race.cpp.obj"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\CS380Project2.dir\Race.cpp.obj -c C:\Users\picto\Documents\GitHub\CS380Project2\Race.cpp
+
+CMakeFiles/CS380Project2.dir/Race.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CS380Project2.dir/Race.cpp.i"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\picto\Documents\GitHub\CS380Project2\Race.cpp > CMakeFiles\CS380Project2.dir\Race.cpp.i
+
+CMakeFiles/CS380Project2.dir/Race.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CS380Project2.dir/Race.cpp.s"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\picto\Documents\GitHub\CS380Project2\Race.cpp -o CMakeFiles\CS380Project2.dir\Race.cpp.s
+
+CMakeFiles/CS380Project2.dir/Racer.cpp.obj: CMakeFiles/CS380Project2.dir/flags.make
+CMakeFiles/CS380Project2.dir/Racer.cpp.obj: ../Racer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\picto\Documents\GitHub\CS380Project2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/CS380Project2.dir/Racer.cpp.obj"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\CS380Project2.dir\Racer.cpp.obj -c C:\Users\picto\Documents\GitHub\CS380Project2\Racer.cpp
+
+CMakeFiles/CS380Project2.dir/Racer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CS380Project2.dir/Racer.cpp.i"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\picto\Documents\GitHub\CS380Project2\Racer.cpp > CMakeFiles\CS380Project2.dir\Racer.cpp.i
+
+CMakeFiles/CS380Project2.dir/Racer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CS380Project2.dir/Racer.cpp.s"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\picto\Documents\GitHub\CS380Project2\Racer.cpp -o CMakeFiles\CS380Project2.dir\Racer.cpp.s
+
 # Object files for target CS380Project2
 CS380Project2_OBJECTS = \
 "CMakeFiles/CS380Project2.dir/main.cpp.obj" \
 "CMakeFiles/CS380Project2.dir/Player.cpp.obj" \
-"CMakeFiles/CS380Project2.dir/Board.cpp.obj"
+"CMakeFiles/CS380Project2.dir/Board.cpp.obj" \
+"CMakeFiles/CS380Project2.dir/SAM.cpp.obj" \
+"CMakeFiles/CS380Project2.dir/Race.cpp.obj" \
+"CMakeFiles/CS380Project2.dir/Racer.cpp.obj"
 
 # External object files for target CS380Project2
 CS380Project2_EXTERNAL_OBJECTS =
@@ -107,11 +149,14 @@ CS380Project2_EXTERNAL_OBJECTS =
 CS380Project2.exe: CMakeFiles/CS380Project2.dir/main.cpp.obj
 CS380Project2.exe: CMakeFiles/CS380Project2.dir/Player.cpp.obj
 CS380Project2.exe: CMakeFiles/CS380Project2.dir/Board.cpp.obj
+CS380Project2.exe: CMakeFiles/CS380Project2.dir/SAM.cpp.obj
+CS380Project2.exe: CMakeFiles/CS380Project2.dir/Race.cpp.obj
+CS380Project2.exe: CMakeFiles/CS380Project2.dir/Racer.cpp.obj
 CS380Project2.exe: CMakeFiles/CS380Project2.dir/build.make
 CS380Project2.exe: CMakeFiles/CS380Project2.dir/linklibs.rsp
 CS380Project2.exe: CMakeFiles/CS380Project2.dir/objects1.rsp
 CS380Project2.exe: CMakeFiles/CS380Project2.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\picto\Documents\GitHub\CS380Project2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable CS380Project2.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\picto\Documents\GitHub\CS380Project2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable CS380Project2.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\CS380Project2.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -6,26 +6,6 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/picto/Documents/GitHub/CS380Project2/Board.cpp
-Board.h
-C:/Users/picto/Documents/GitHub/CS380Project2/Board.h
-thread
--
-iostream
--
-cstdlib
--
-ctime
--
-vector
--
-Player.h
-C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
-mutex
--
-iterator
--
-
 C:/Users/picto/Documents/GitHub/CS380Project2/Board.h
 math.h
 -
@@ -36,25 +16,47 @@ mutex
 Player.h
 C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
 
-C:/Users/picto/Documents/GitHub/CS380Project2/Player.cpp
-iostream
--
-stdlib.h
--
-time.h
--
+C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
 thread
 -
 mutex
 -
-Board.h
-C:/Users/picto/Documents/GitHub/CS380Project2/Board.h
+
+C:/Users/picto/Documents/GitHub/CS380Project2/Race.cpp
+mutex
+-
+vector
+-
+Race.h
+C:/Users/picto/Documents/GitHub/CS380Project2/Race.h
+Player.h
+C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
+Racer.h
+C:/Users/picto/Documents/GitHub/CS380Project2/Racer.h
+
+C:/Users/picto/Documents/GitHub/CS380Project2/Race.h
+mutex
+-
+vector
+-
+Player.h
+C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
+Racer.h
+C:/Users/picto/Documents/GitHub/CS380Project2/Racer.h
+
+C:/Users/picto/Documents/GitHub/CS380Project2/Racer.cpp
+Racer.h
+C:/Users/picto/Documents/GitHub/CS380Project2/Racer.h
+
+C:/Users/picto/Documents/GitHub/CS380Project2/Racer.h
+mutex
+-
+vector
+-
 Player.h
 C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
 
-C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
-thread
--
+C:/Users/picto/Documents/GitHub/CS380Project2/SAM.h
 mutex
 -
 
@@ -69,4 +71,10 @@ vector
 -
 Board.h
 C:/Users/picto/Documents/GitHub/CS380Project2/Board.h
+Race.h
+C:/Users/picto/Documents/GitHub/CS380Project2/Race.h
+Racer.h
+C:/Users/picto/Documents/GitHub/CS380Project2/Racer.h
+SAM.h
+C:/Users/picto/Documents/GitHub/CS380Project2/SAM.h
 

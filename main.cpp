@@ -3,6 +3,9 @@
 #include <mutex>
 #include <vector>
 #include "Board.h"
+#include "Race.h"
+#include "Racer.h"
+#include "SAM.h"
 using namespace std;
 #define NUM_THREADS_1 4
 #define NUM_THREADS_2 3
@@ -10,7 +13,7 @@ void phase2(vector<Player> * players)
 {
     mutex mtx;
     thread playerThreads[NUM_THREADS_2];
-    Race *race = new Race(&mtx, players);
+    Race *race = (new Race(&mtx, players));
     int win = 0;
     SAM *sam = new SAM(&mtx);
     while(win == 0)
@@ -27,7 +30,7 @@ void phase2(vector<Player> * players)
         }
         win = race->hasWon();
     }
-    cout<< players->at(win-1).getCharacterInitial << " Has Won!";
+    cout<< players->at(win-1).getCharacterInitial() << " Has Won!";
 }
 vector<Player>* phase1()
 {

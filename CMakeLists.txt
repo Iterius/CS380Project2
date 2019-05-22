@@ -3,4 +3,4 @@ project(CS380Project2)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(CS380Project2 main.cpp Player.cpp Player.h Board.cpp Board.h)
+add_executable(CS380Project2 main.cpp Player.cpp Player.h Board.cpp Board.h SAM.cpp SAM.h Race.cpp Race.h Racer.cpp Racer.h)

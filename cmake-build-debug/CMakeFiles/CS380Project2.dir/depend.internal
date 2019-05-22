@@ -9,7 +9,22 @@ CMakeFiles/CS380Project2.dir/Player.cpp.obj
  C:/Users/picto/Documents/GitHub/CS380Project2/Board.h
  C:/Users/picto/Documents/GitHub/CS380Project2/Player.cpp
  C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
+CMakeFiles/CS380Project2.dir/Race.cpp.obj
+ C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
+ C:/Users/picto/Documents/GitHub/CS380Project2/Race.cpp
+ C:/Users/picto/Documents/GitHub/CS380Project2/Race.h
+ C:/Users/picto/Documents/GitHub/CS380Project2/Racer.h
+CMakeFiles/CS380Project2.dir/Racer.cpp.obj
+ C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
+ C:/Users/picto/Documents/GitHub/CS380Project2/Racer.cpp
+ C:/Users/picto/Documents/GitHub/CS380Project2/Racer.h
+CMakeFiles/CS380Project2.dir/SAM.cpp.obj
+ C:/Users/picto/Documents/GitHub/CS380Project2/SAM.cpp
+ C:/Users/picto/Documents/GitHub/CS380Project2/SAM.h
 CMakeFiles/CS380Project2.dir/main.cpp.obj
  C:/Users/picto/Documents/GitHub/CS380Project2/Board.h
  C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
+ C:/Users/picto/Documents/GitHub/CS380Project2/Race.h
+ C:/Users/picto/Documents/GitHub/CS380Project2/Racer.h
+ C:/Users/picto/Documents/GitHub/CS380Project2/SAM.h
  C:/Users/picto/Documents/GitHub/CS380Project2/main.cpp

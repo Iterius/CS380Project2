@@ -92,6 +92,24 @@
 		<Unit filename="C:/Users/picto/Documents/GitHub/CS380Project2/Player.h">
 			<Option target="CS380Project2"/>
 		</Unit>
+		<Unit filename="C:/Users/picto/Documents/GitHub/CS380Project2/Race.cpp">
+			<Option target="CS380Project2"/>
+		</Unit>
+		<Unit filename="C:/Users/picto/Documents/GitHub/CS380Project2/Race.h">
+			<Option target="CS380Project2"/>
+		</Unit>
+		<Unit filename="C:/Users/picto/Documents/GitHub/CS380Project2/Racer.cpp">
+			<Option target="CS380Project2"/>
+		</Unit>
+		<Unit filename="C:/Users/picto/Documents/GitHub/CS380Project2/Racer.h">
+			<Option target="CS380Project2"/>
+		</Unit>
+		<Unit filename="C:/Users/picto/Documents/GitHub/CS380Project2/SAM.cpp">
+			<Option target="CS380Project2"/>
+		</Unit>
+		<Unit filename="C:/Users/picto/Documents/GitHub/CS380Project2/SAM.h">
+			<Option target="CS380Project2"/>
+		</Unit>
 		<Unit filename="C:/Users/picto/Documents/GitHub/CS380Project2/main.cpp">
 			<Option target="CS380Project2"/>
 		</Unit>

@@ -6,6 +6,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "C:/Users/picto/Documents/GitHub/CS380Project2/Board.cpp" "C:/Users/picto/Documents/GitHub/CS380Project2/cmake-build-debug/CMakeFiles/CS380Project2.dir/Board.cpp.obj"
   "C:/Users/picto/Documents/GitHub/CS380Project2/Player.cpp" "C:/Users/picto/Documents/GitHub/CS380Project2/cmake-build-debug/CMakeFiles/CS380Project2.dir/Player.cpp.obj"
+  "C:/Users/picto/Documents/GitHub/CS380Project2/Race.cpp" "C:/Users/picto/Documents/GitHub/CS380Project2/cmake-build-debug/CMakeFiles/CS380Project2.dir/Race.cpp.obj"
+  "C:/Users/picto/Documents/GitHub/CS380Project2/Racer.cpp" "C:/Users/picto/Documents/GitHub/CS380Project2/cmake-build-debug/CMakeFiles/CS380Project2.dir/Racer.cpp.obj"
+  "C:/Users/picto/Documents/GitHub/CS380Project2/SAM.cpp" "C:/Users/picto/Documents/GitHub/CS380Project2/cmake-build-debug/CMakeFiles/CS380Project2.dir/SAM.cpp.obj"
   "C:/Users/picto/Documents/GitHub/CS380Project2/main.cpp" "C:/Users/picto/Documents/GitHub/CS380Project2/cmake-build-debug/CMakeFiles/CS380Project2.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

@@ -176,6 +176,87 @@ Player.cpp.s:
 	$(MAKE) -f CMakeFiles\CS380Project2.dir\build.make CMakeFiles/CS380Project2.dir/Player.cpp.s
 .PHONY : Player.cpp.s
 
+Race.obj: Race.cpp.obj
+
+.PHONY : Race.obj
+
+# target to build an object file
+Race.cpp.obj:
+	$(MAKE) -f CMakeFiles\CS380Project2.dir\build.make CMakeFiles/CS380Project2.dir/Race.cpp.obj
+.PHONY : Race.cpp.obj
+
+Race.i: Race.cpp.i
+
+.PHONY : Race.i
+
+# target to preprocess a source file
+Race.cpp.i:
+	$(MAKE) -f CMakeFiles\CS380Project2.dir\build.make CMakeFiles/CS380Project2.dir/Race.cpp.i
+.PHONY : Race.cpp.i
+
+Race.s: Race.cpp.s
+
+.PHONY : Race.s
+
+# target to generate assembly for a file
+Race.cpp.s:
+	$(MAKE) -f CMakeFiles\CS380Project2.dir\build.make CMakeFiles/CS380Project2.dir/Race.cpp.s
+.PHONY : Race.cpp.s
+
+Racer.obj: Racer.cpp.obj
+
+.PHONY : Racer.obj
+
+# target to build an object file
+Racer.cpp.obj:
+	$(MAKE) -f CMakeFiles\CS380Project2.dir\build.make CMakeFiles/CS380Project2.dir/Racer.cpp.obj
+.PHONY : Racer.cpp.obj
+
+Racer.i: Racer.cpp.i
+
+.PHONY : Racer.i
+
+# target to preprocess a source file
+Racer.cpp.i:
+	$(MAKE) -f CMakeFiles\CS380Project2.dir\build.make CMakeFiles/CS380Project2.dir/Racer.cpp.i
+.PHONY : Racer.cpp.i
+
+Racer.s: Racer.cpp.s
+
+.PHONY : Racer.s
+
+# target to generate assembly for a file
+Racer.cpp.s:
+	$(MAKE) -f CMakeFiles\CS380Project2.dir\build.make CMakeFiles/CS380Project2.dir/Racer.cpp.s
+.PHONY : Racer.cpp.s
+
+SAM.obj: SAM.cpp.obj
+
+.PHONY : SAM.obj
+
+# target to build an object file
+SAM.cpp.obj:
+	$(MAKE) -f CMakeFiles\CS380Project2.dir\build.make CMakeFiles/CS380Project2.dir/SAM.cpp.obj
+.PHONY : SAM.cpp.obj
+
+SAM.i: SAM.cpp.i
+
+.PHONY : SAM.i
+
+# target to preprocess a source file
+SAM.cpp.i:
+	$(MAKE) -f CMakeFiles\CS380Project2.dir\build.make CMakeFiles/CS380Project2.dir/SAM.cpp.i
+.PHONY : SAM.cpp.i
+
+SAM.s: SAM.cpp.s
+
+.PHONY : SAM.s
+
+# target to generate assembly for a file
+SAM.cpp.s:
+	$(MAKE) -f CMakeFiles\CS380Project2.dir\build.make CMakeFiles/CS380Project2.dir/SAM.cpp.s
+.PHONY : SAM.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -218,6 +299,15 @@ help:
 	@echo ... Player.obj
 	@echo ... Player.i
 	@echo ... Player.s
+	@echo ... Race.obj
+	@echo ... Race.i
+	@echo ... Race.s
+	@echo ... Racer.obj
+	@echo ... Racer.i
+	@echo ... Racer.s
+	@echo ... SAM.obj
+	@echo ... SAM.i
+	@echo ... SAM.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
