@@ -5,10 +5,14 @@
 #include "Board.h"
 using namespace std;
 #define NUM_THREADS 4
+void phase2(vector<Player> * players)
+{
 
-int main()
+}
+vector<Player>* phase1()
 {
     mutex mtx;
+    vector<Player> *winners = new vector<Player>();
     thread playerThreads[NUM_THREADS];
     Board *board = (new Board(&mtx));
     int win = 0;
@@ -38,7 +42,21 @@ int main()
             mountainMove = 0;
             board->randomMoveMountain();
         }
+        if(win != 0)
+        {
+            winners->push_back(players->at(win+1));
+            if(players->size() > 1 && winners->size() < 2)
+            {
+                win = 0;
+            }
+        }
     }
-    cout<<players->at(win-1).getCharacterInitial()<<" has won the game thank you jesus someone did it holy hell.";
+    return winners;
+}
+
+int main()
+{
+    phase2(phase1());
 
 }
+
