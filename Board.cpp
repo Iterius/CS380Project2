@@ -10,6 +10,9 @@
 int MAX_THREADS = 4;
 Board::Board(std::mutex *mtx)
 {
+    lastTurnTaken = 3;
+    mountainMove = 0;
+    someoneWon = false;
     won = 0;
     srand(time(0));
     this->mtx = mtx;
@@ -21,8 +24,17 @@ Board::Board(std::mutex *mtx)
         }
     }
     char initial;
+    int turnNumber;
     for(int x = 0; x < 4; x++)
     {
+        if(x == 0)
+        {
+            turnNumber = 3;
+        }
+        else
+        {
+            turnNumber = (x - 1);
+        }
         if(x == 0)
             initial = 'B';
         else if (x == 1)
@@ -32,7 +44,7 @@ Board::Board(std::mutex *mtx)
         else if (x == 3) {
             initial = 'M';
         }
-        players.push_back(*(new Player(mtx, this, initial)));
+        players.push_back(*(new Player(mtx, this, initial, turnNumber)));
         if(x == 3) {
             players.at(3).setMartian();
         }
@@ -55,12 +67,19 @@ Board::Board(std::mutex *mtx)
 }
 void Board::randomMoveMountain()
 {
-    int newX, newY;
-    findValidPosition(&newX, &newY);
-    positions[mountainX][mountainY] = 0;
-    positions[newX][newY] = 2;
-    mountainX = newX;
-    mountainY = newY;
+    if(mountainMove == 2) {
+        int newX, newY;
+        findValidPosition(&newX, &newY);
+        positions[mountainX][mountainY] = 0;
+        positions[newX][newY] = 2;
+        mountainX = newX;
+        mountainY = newY;
+        mountainMove = 0;
+    }
+    else
+    {
+        mountainMove++;
+    }
 }
 void Board::findValidPosition(int*x, int*y)
 {
@@ -126,7 +145,9 @@ std::vector<Player>* Board::getPlayers()
 }
 int Board::hasWon()
 {
-    return won;
+    int toReturn = won;
+    won = 0;
+    return toReturn;
 }
 void Board::moveToPosition(Player *toMove, int x, int y)
 {
@@ -145,8 +166,16 @@ bool Board::updatePosition(int oldx, int oldy, int x, int y)
     {
         if(toMove->getHasCarrot())
         {
+            removePlayer(positions[oldx][oldy]-3);
             won = positions[oldx][oldy]-2;
-            moveToPosition(toMove, x, y);
+            positions[oldx][oldy] = 0;
+            if(someoneWon) {
+                for(int i = 0; i < players.size(); i++) {
+                    removePlayer(i);
+                }
+            } else {
+                someoneWon = true;
+            }
             return true;
         }
         else
@@ -212,14 +241,10 @@ bool Board::updatePosition(int oldx, int oldy, int x, int y)
     }
 }
 void Board::removePlayer(int index) {
-    std::vector<Player>::iterator itr = players.begin();
-    advance(itr, index);
-    players.erase(itr);
-    int toUpdateX = 0;
-    int toUpdateY = 0;
-    for(int i = index; i < players.size();i++)
-    {
-        players.at(i).getLocation(&toUpdateX, &toUpdateY);
-        positions[toUpdateX][toUpdateY]--;
+    players.at(index).setAlive(false);
+}
+void Board::stopPlaying() {
+    for(int x = 0; x < players.size(); x++) {
+        players[x].stillPlaying = false;
     }
 }

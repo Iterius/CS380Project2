@@ -16,11 +16,13 @@ Player::Player() {
         directions[i] = 0;
     }
     isMartian = false;
+    stillPlaying = true;
     isAlive = true;
 }
 
-Player::Player(std::mutex *mtx, Board *board, char initial) : Player() {
+Player::Player(std::mutex *mtx, Board *board, char initial, int turnNumber) : Player() {
     this->mtx = mtx;
+    turnToTake = turnNumber;
     playerBoard = board;
     characterInitial = initial;
     hasCarrot = false;
@@ -124,28 +126,46 @@ void Player::setAlive(bool alive) {
 
 void Player::takeTurn() {
     srand(time(NULL));
-    bool hasMoved = false;
-    while(!hasMoved) {
-        pickDirection();
-        if(checkOutOfBounds(nextX, nextY)) {
-            if (checkForObject(nextX, nextY)){
-                mtx->lock();
-                if(isAlive) {
-                    hasMoved = playerBoard->updatePosition(locationX, locationY, nextX, nextY);
-                } else {
-                    hasMoved = true;
+    while (stillPlaying) {
+        if (playerBoard->lastTurnTaken == turnToTake) {
+            bool hasMoved = false;
+            mtx->lock();
+            //_sleep(1000);
+            std::cout << characterInitial << " is taking their turn \n";
+            if(isAlive) {
+                while (!hasMoved) {
+                    pickDirection();
+                    if (checkOutOfBounds(nextX, nextY)) {
+                        if (checkForObject(nextX, nextY)) {
+                            hasMoved = playerBoard->updatePosition(locationX, locationY, nextX, nextY);
+                            if (hasMoved) {
+                                playerBoard->printBoard();
+                            }
+                        }
+                    }
+                    if (potentialCarrot && hasMoved) {
+                        hasCarrot = true;
+                    } else {
+                        potentialCarrot = false;
+                    }
+                    directions[direction] = 1;
                 }
-                mtx->unlock();
+                for (int i = 0; i < 4; i++) {
+                    directions[i] = 0;
+                }
             }
+            if (turnToTake == 3) {
+                playerBoard->lastTurnTaken = 0;
+            }
+            else
+            {
+                playerBoard->lastTurnTaken = turnToTake + 1;
+            }
+            if(turnToTake == 2) {
+                playerBoard->randomMoveMountain();
+            }
+            std::cout << playerBoard->lastTurnTaken << "\n";
+            mtx->unlock();
         }
-        if(potentialCarrot && hasMoved) {
-            hasCarrot = true;
-        } else {
-            potentialCarrot = false;
-        }
-        directions[direction] = 1;
-    }
-    for(int i = 0; i < 4; i++) {
-        directions[i] = 0;
     }
 }

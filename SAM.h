@@ -10,11 +10,14 @@
 class SAM {
 private:
     bool hasFired;
+    int turnToTake;
+    int numPlayers;
     Race *race;
     std::mutex *mtx;
 public:
-    SAM(std::mutex *mtx, Race *race);
+    SAM(std::mutex *mtx, Race *race, int turnNumber, int playerNum);
     void takeShot();
+    bool stillPlaying;
 };
 
 

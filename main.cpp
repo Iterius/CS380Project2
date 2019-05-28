@@ -17,22 +17,24 @@ void phase2(vector<Player> * players)
     Race *race = (new Race(&mtx, players));
     std::vector<Racer> *racers = race->getRacers();
     int win = 0;
-    SAM *sam = new SAM(&mtx, race);
+    SAM *sam = new SAM(&mtx, race, racers->size(), racers->size());
+    race->printRace();
+    for(int x = 0; x < racers->size(); x++)
+    {
+        racerThreads[x] = thread(&Racer::takeTurn, &racers->at(x));
+    }
+    racerThreads[2] = thread(&SAM::takeShot, sam);
     while(win == 0)
     {
         race->printRace();
-        for(int x = 0; x < racers->size(); x++)
-        {
-            racerThreads[x] = thread(&Racer::takeTurn, &racers->at(x));
-        }
-        racerThreads[2] = thread(&SAM::takeShot, sam);
-        for(int x = 0; x < racers->size(); x++)
-        {
-            racerThreads[x].join();
-        }
-        racerThreads[2].join();
         win = race->hasWon();
     }
+    race->stopPlaying();
+    for(int x = 0; x < racers->size(); x++)
+    {
+        racerThreads[x].join();
+    }
+    racerThreads[2].join();
     cout<< racers->at(win-1).getCharacterInitial() << " Has Won!";
 }
 vector<Player>* phase1()
@@ -44,39 +46,37 @@ vector<Player>* phase1()
     int win = 0;
     vector<Player> *players = board->getPlayers();
     int mountainMove = 0;
+    board->printBoard();
+    for(int x = 0; x < players->size(); x++)
+    {
+        playerThreads[x] = std::thread(&Player::takeTurn, &players->at(x));
+    }
     while(win == 0)
     {
-        board->printBoard();
-        for(int x = 0; x < players->size(); x++)
-        {
-            playerThreads[x] = std::thread(&Player::takeTurn, &players->at(x));
-        }
-        for(int x = 0; x < players->size(); x++)
-        {
-            playerThreads[x].join();
-        }
-        for(int x = 0; x < players->size(); x++)
-        {
-            if(!players->at(x).getAlive()) {
-                board->removePlayer(x);
-            }
-        }
         win = board->hasWon();
-        mountainMove++;
-        if(mountainMove == 3)
-        {
-            mountainMove = 0;
-            board->randomMoveMountain();
-        }
         if(win != 0)
         {
             winners->push_back(players->at(win-1));
-            board->removePlayer(win-1);
-            if(players->size() > 0 && winners->size() < 2)
+            bool playersAlive = false;
+            for(int i = 0; i < players->size(); i++) {
+                if(players->at(i).getAlive()) {
+                    playersAlive = true;
+                }
+            }
+            if(playersAlive && winners->size() < 2)
             {
                 win = 0;
             }
+            else
+            {
+                cout << "made it to stop playing";
+                board->stopPlaying();
+            }
         }
+    }
+    for(int x = 0; x < players->size(); x++)
+    {
+        playerThreads[x].join();
     }
     return winners;
 }

@@ -13,13 +13,15 @@ class Race;
 class Racer {
 private:
     int position;
+    int turnToTake;
     int racerNumber;
     char characterInitial;
     std::mutex *mtx;
     Race *race;
 public:
     Racer();
-    Racer(std::mutex *mtx, Race *race, char initial);
+    Racer(std::mutex *mtx, Race *race, char initial, int turnTaken);
+    bool stillPlaying;
     char getCharacterInitial();
     int getPosition();
     void takeTurn();

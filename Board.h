@@ -15,14 +15,17 @@ class Board
         void moveToPosition(Player *toMove, int x, int y);
         bool updatePosition(int oldx, int oldy, int x, int y);
         int hasWon();
+        int lastTurnTaken;
         void removePlayer(int index);
         std::vector<Player>* getPlayers();
         void randomMoveMountain();
+        void stopPlaying();
 
     protected:
 
     private:
         int positions[5][5];
+        int mountainMove;
         int mountainX;
         int mountainY;
         int carrotFlagX;
@@ -31,6 +34,7 @@ class Board
         std::mutex *mtx;
         void findValidPosition(int* x, int *y);
         bool flagCovered;
+        bool someoneWon;
         int won;
 
 };

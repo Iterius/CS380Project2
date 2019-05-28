@@ -13,8 +13,10 @@ using namespace std;
 Race::Race(std::mutex *mtx, std::vector<Player> *players) {
     won = 0;
     length = 10;
+    int lastTurnTaken = players->size();
     player1Frozen = false;
     player2Frozen = false;
+    int turnNumber;
     this->mtx = mtx;
     if(players->size() == 1 )
     {
@@ -27,7 +29,14 @@ Race::Race(std::mutex *mtx, std::vector<Player> *players) {
     racers = new std::vector<Racer>();
     for(int x = 0; x < players->size(); x++)
     {
-        racers->push_back(*(new Racer(mtx, this, players->at(x).getCharacterInitial())));
+        if (x == 0) {
+            turnNumber = players->size()+1;
+        }
+        else
+        {
+            turnNumber = (x-1);
+        }
+        racers->push_back(*(new Racer(mtx, this, players->at(x).getCharacterInitial(), turnNumber)));
     }
 }
 
@@ -107,4 +116,10 @@ int Race::hasWon()
         }
     }
     return won;
+}
+
+void Race::stopPlaying() {
+    for(int x = 0; x < racers->size(); x++) {
+        racers->at(x).stillPlaying = false;
+    }
 }

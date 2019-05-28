@@ -24,10 +24,12 @@ public:
     Race(std::mutex *mtx, std::vector<Player> *players);
     void printRace();
     int hasWon();
+    int lastTurnTaken;
     std::vector<Racer> *getRacers();
     bool isFrozen(int racer);
     void toggleFrozen(int racer);
     void setFrozen(int racer, bool frozen);
+    void stopPlaying();
 };
 
 
