@@ -149,6 +149,18 @@ void Player::takeTurn() {
                         potentialCarrot = false;
                     }
                     directions[direction] = 1;
+                    bool cannotMove = true;
+                    for(int x = 0; x < 3; x++)
+                    {
+                        if (directions[x] == 0)
+                        {
+                            cannotMove = false;
+                        }
+                    }
+                    if(cannotMove == true)
+                    {
+                        hasMoved = true;
+                    }
                 }
                 for (int i = 0; i < 4; i++) {
                     directions[i] = 0;
