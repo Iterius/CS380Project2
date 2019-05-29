@@ -4,9 +4,15 @@
 
 #include "Race.h"
 #include "Racer.h"
+#include <iostream>
 
 Racer::Racer(std::mutex *mtx, Race *race, char initial, int turnNumber) {
     position = 0;
+    if(turnNumber == 0) {
+        racerNumber = 2;
+    } else {
+        racerNumber = 1;
+    }
     turnToTake =  turnNumber;
     stillPlaying = true;
     this->mtx = mtx;
@@ -24,21 +30,23 @@ char Racer::getCharacterInitial() {
 
 void Racer::takeTurn() {
     while (stillPlaying) {
-        if (race->lastTurnTaken == turnToTake) {
+        if (race->getLastTurnTaken() == turnToTake && race->hasWon() == 0) {
             mtx->lock();
+            std::cout << characterInitial << " is taking his turn. \n";
             if (!race->isFrozen(racerNumber)) {
                 position = position + 1;
             } else {
                 race->toggleFrozen(racerNumber);
             }
-            mtx->unlock();
-            if(race->lastTurnTaken == 0) {
-                race->lastTurnTaken = turnToTake + 1;
+            race->printRace();
+            if(race->getLastTurnTaken() == 0) {
+                race->setLastTurnTaken(turnToTake + 1);
             }
             else
             {
-                race->lastTurnTaken = 0;
+                race->setLastTurnTaken(0);
             }
+            mtx->unlock();
         }
     }
 }

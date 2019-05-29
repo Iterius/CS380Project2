@@ -16,6 +16,7 @@ private:
     bool player1Frozen;
     bool player2Frozen;
     std::vector<Racer> *racers;
+    int lastTurnTaken;
     int won;
     int length;
     bool oneRacer;
@@ -24,7 +25,9 @@ public:
     Race(std::mutex *mtx, std::vector<Player> *players);
     void printRace();
     int hasWon();
-    int lastTurnTaken;
+    void printStatus();
+    int getLastTurnTaken();
+    void setLastTurnTaken(int turnTaken);
     std::vector<Racer> *getRacers();
     bool isFrozen(int racer);
     void toggleFrozen(int racer);

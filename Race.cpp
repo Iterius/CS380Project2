@@ -14,6 +14,7 @@ Race::Race(std::mutex *mtx, std::vector<Player> *players) {
     won = 0;
     length = 10;
     int lastTurnTaken = players->size();
+    std::cout << lastTurnTaken << "\n";
     player1Frozen = false;
     player2Frozen = false;
     int turnNumber;
@@ -30,19 +31,20 @@ Race::Race(std::mutex *mtx, std::vector<Player> *players) {
     for(int x = 0; x < players->size(); x++)
     {
         if (x == 0) {
-            turnNumber = players->size()+1;
+            turnNumber = players->size();
         }
         else
         {
             turnNumber = (x-1);
         }
+        cout << turnNumber << "\n";
         racers->push_back(*(new Racer(mtx, this, players->at(x).getCharacterInitial(), turnNumber)));
     }
 }
 
 bool Race::isFrozen(int racer)
 {
-    if(racer == 0)
+    if(racer == 1)
     {
         return player1Frozen;
     }
@@ -53,7 +55,7 @@ bool Race::isFrozen(int racer)
 }
 void Race::toggleFrozen(int racer)
 {
-    if (racer == 0)
+    if (racer == 1)
     {
         player1Frozen = !player1Frozen;
     }
@@ -67,7 +69,7 @@ std::vector<Racer> *Race::getRacers() {
 }
 void Race::setFrozen(int racer, bool frozen)
 {
-    if(racer == 0)
+    if(racer == 1)
     {
         player1Frozen = frozen;
     }
@@ -116,6 +118,29 @@ int Race::hasWon()
         }
     }
     return won;
+}
+
+int Race::getLastTurnTaken() {
+    return lastTurnTaken;
+}
+
+void Race::setLastTurnTaken(int turnTaken) {
+    lastTurnTaken = turnTaken;
+}
+
+void Race::printStatus() {
+    if(isFrozen(1)) {
+        cout << "Player 1 is frozen. \n";
+    } else {
+        cout << "Player 1 is not frozen. \n";
+    }
+    if(racers->size() == 2) {
+        if (isFrozen(2)) {
+            cout << "Player 2 is frozen. \n";
+        } else {
+            cout << "Player 2 is not frozen. \n";
+        }
+    }
 }
 
 void Race::stopPlaying() {

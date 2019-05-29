@@ -4,6 +4,7 @@
 
 #include "Race.h"
 #include "SAM.h"
+#include <random>
 
 SAM::SAM(std::mutex *mtx, Race *race, int turnNumber, int playerNum) {
     hasFired = false;
@@ -15,22 +16,25 @@ SAM::SAM(std::mutex *mtx, Race *race, int turnNumber, int playerNum) {
 }
 
 void SAM::takeShot() {
+    std::random_device rd;
+    std::mt19937 mt(rd());
+    std::uniform_int_distribution<int> dist(1, 2);
     while(stillPlaying) {
-        if(race->lastTurnTaken == turnToTake) {
+        if(race->getLastTurnTaken() == turnToTake) {
+            mtx->lock();
             if (!hasFired) {
-                srand(time(NULL));
-                int target = rand() % numPlayers;
-                int hitTarget = rand() % 2;
+                int target = dist(mt);
+                int hitTarget = 1;
                 if (hitTarget == 1) {
-                    mtx->lock();
                     race->setFrozen(target, true);
-                    mtx->unlock();
                 }
                 hasFired = true;
             } else {
                 hasFired = false;
             }
-            race->lastTurnTaken = turnToTake + 1;
+            race->setLastTurnTaken(turnToTake + 1);
+            race->printStatus();
+            mtx->unlock();
         }
     }
 }

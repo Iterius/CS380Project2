@@ -15,9 +15,10 @@ void phase2(vector<Player> * players)
     mutex mtx;
     thread racerThreads[NUM_THREADS_2];
     Race *race = (new Race(&mtx, players));
+    race->setLastTurnTaken(players->size());
     std::vector<Racer> *racers = race->getRacers();
     int win = 0;
-    SAM *sam = new SAM(&mtx, race, racers->size(), racers->size());
+    SAM *sam = new SAM(&mtx, race, racers->size()-1, racers->size());
     race->printRace();
     for(int x = 0; x < racers->size(); x++)
     {
@@ -26,10 +27,13 @@ void phase2(vector<Player> * players)
     racerThreads[2] = thread(&SAM::takeShot, sam);
     while(win == 0)
     {
-        race->printRace();
+        mtx.lock();
         win = race->hasWon();
+        mtx.unlock();
     }
+    cout << "GGNORE \n";
     race->stopPlaying();
+    sam->stillPlaying = false;
     for(int x = 0; x < racers->size(); x++)
     {
         racerThreads[x].join();
@@ -53,6 +57,7 @@ vector<Player>* phase1()
     }
     while(win == 0)
     {
+        mtx.lock();
         win = board->hasWon();
         if(win != 0)
         {
@@ -65,6 +70,7 @@ vector<Player>* phase1()
             }
             if(playersAlive && winners->size() < 2)
             {
+                cout << winners->size() << " size of player when player got out. \n";
                 win = 0;
             }
             else
@@ -73,6 +79,7 @@ vector<Player>* phase1()
                 board->stopPlaying();
             }
         }
+        mtx.unlock();
     }
     for(int x = 0; x < players->size(); x++)
     {

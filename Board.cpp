@@ -201,6 +201,7 @@ bool Board::updatePosition(int oldx, int oldy, int x, int y)
             moveToPosition(toMove, x, y);
             if(flagCovered && carrotFlagX == oldx && carrotFlagY == oldy)
             {
+                std::cout << "Marvin killed some dude with a carrot";
                 positions[oldx][oldy] = 1;
                 carrotFlagX = 6;
                 carrotFlagY = 6;

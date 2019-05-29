@@ -6,16 +6,6 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/picto/Documents/GitHub/CS380Project2/Board.h
-math.h
--
-vector
--
-mutex
--
-Player.h
-C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
-
 C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
 thread
 -
@@ -40,25 +30,15 @@ vector
 Player.h
 C:/Users/picto/Documents/GitHub/CS380Project2/Player.h
 
-C:/Users/picto/Documents/GitHub/CS380Project2/SAM.h
-mutex
--
-
-C:/Users/picto/Documents/GitHub/CS380Project2/main.cpp
-iostream
--
-thread
--
-mutex
--
-vector
--
-Board.h
-C:/Users/picto/Documents/GitHub/CS380Project2/Board.h
+C:/Users/picto/Documents/GitHub/CS380Project2/SAM.cpp
 Race.h
 C:/Users/picto/Documents/GitHub/CS380Project2/Race.h
-Racer.h
-C:/Users/picto/Documents/GitHub/CS380Project2/Racer.h
 SAM.h
 C:/Users/picto/Documents/GitHub/CS380Project2/SAM.h
+random
+-
+
+C:/Users/picto/Documents/GitHub/CS380Project2/SAM.h
+mutex
+-
 
