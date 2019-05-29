@@ -219,6 +219,12 @@ bool Board::updatePosition(int oldx, int oldy, int x, int y)
     }
     else
     {
+        if(positions[x][y] == 1 && toMove->getHasCarrot())
+        {
+            carrotFlagX = x;
+            carrotFlagY = y;
+            flagCovered = true;
+        }
         moveToPosition(toMove, x, y);
         if(flagCovered && carrotFlagX == oldx && carrotFlagY == oldy)
         {
@@ -230,12 +236,6 @@ bool Board::updatePosition(int oldx, int oldy, int x, int y)
         else
         {
             positions[oldx][oldy] = 0;
-        }
-        if(positions[x][y] == 1 && toMove->getHasCarrot())
-        {
-            carrotFlagX = x;
-            carrotFlagY = y;
-            flagCovered = true;
         }
         return true;
     }
